@@ -106,8 +106,9 @@ export default function PreviewPage() {
   }
 
   async function handleUpgrade(priceType: 'onetime' | 'subscription') {
+    // If no email yet, show email input first
     if (!email) {
-      alert('Please enter your email first');
+      setShowEmailInput(true);
       return;
     }
 
@@ -125,14 +126,16 @@ export default function PreviewPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.error || 'Failed to create checkout');
+        console.error('Checkout failed:', data.error);
+        setError(data.error || 'Failed to create checkout');
         return;
       }
 
       // Redirect to Stripe checkout
       window.location.href = data.url;
     } catch (err) {
-      alert('Failed to create checkout. Please try again.');
+      console.error('Checkout error:', err);
+      setError('Failed to create checkout. Please try again.');
     }
   }
 
@@ -313,13 +316,23 @@ export default function PreviewPage() {
                   </div>
                 )}
 
+                <div className="mb-3">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-slate-400 line-through text-lg">$149</span>
+                    <span className="text-red-600 font-bold text-2xl">$99</span>
+                    <span className="text-sm text-slate-600">today only</span>
+                  </div>
+                </div>
                 <button
                   onClick={() => handleUpgrade('onetime')}
-                  className="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-all"
+                  className="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-all mb-2"
                 >
                   Upgrade — $99 one-time
                 </button>
-                <p className="text-xs text-slate-500 text-center mt-2">Priority listing + custom domain</p>
+                <p className="text-xs text-amber-600 text-center mb-2">
+                  ⏰ Offer expires in 24 hours
+                </p>
+                <p className="text-xs text-slate-500 text-center">Priority listing + custom domain</p>
               </div>
 
               {/* Source */}
