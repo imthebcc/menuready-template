@@ -61,7 +61,7 @@ export default function LandingPage() {
             Menu<span className="text-red-600">Ready</span>
           </h1>
           <a
-            href="/support"
+            href="/contact"
             className="text-sm text-slate-600 hover:text-slate-900 font-medium"
           >
             Need help?
@@ -502,6 +502,8 @@ export default function LandingPage() {
       <footer className="bg-slate-900 text-white py-8">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="text-sm text-slate-400">
+            <a href="/contact" className="hover:text-white">Contact</a>
+            {' · '}
             <a href="/privacy" className="hover:text-white">Privacy</a>
             {' · '}
             <a href="/terms" className="hover:text-white">Terms</a>
