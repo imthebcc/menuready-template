@@ -406,8 +406,8 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-
-            {/* Conservative Claims Disclaimer */}
+          </div>
+        </RevealOnScroll>
       </section>
 
       {/* How It Works */}
