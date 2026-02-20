@@ -87,48 +87,45 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 py-16 md:py-20 text-center">
         <FadeUp delay={0.05}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-700 border border-red-200 rounded-full text-sm font-semibold mb-6 shadow-sm">
-            <div className="w-5 h-5 bg-red-600 text-white rounded flex items-center justify-center text-xs font-bold">
-              Y
-            </div>
-            We already found your menu on Yelp
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm font-semibold mb-6 shadow-sm">
+            <i className="ri-checkbox-circle-fill text-green-600"></i>
+            Revenue Opportunity Identified
           </div>
         </FadeUp>
         
         <FadeUp delay={0.10}>
           <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            We digitized it<br />
-            <span className="text-red-600">for you</span>
+            We already built your<br />
+            <span className="text-red-600">digital menu</span>
           </h2>
         </FadeUp>
         
         <FadeUp delay={0.18}>
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
-            We found menu photos from your public Yelp reviews and extracted your items.<br />
-            Your digital menu is ready to review and publish.
+          <p className="text-xl md:text-2xl text-slate-600 mb-6 max-w-3xl mx-auto">
+            We identified your restaurant as one that can <strong className="text-slate-900">increase revenue, improve reviews, and boost retention</strong> with a structured digital menu.
+          </p>
+          <p className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
+            We've already done the work. Preview it free.
           </p>
         </FadeUp>
 
         <FadeUp delay={0.26}>
-          <div className="flex items-center justify-center gap-4 mb-8 flex-wrap">
+          <div className="flex flex-col items-center gap-4 mb-6">
             <Link
               href="/onboarding"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 text-white text-lg font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl animate-pulse"
+              className="inline-flex items-center gap-2 px-10 py-5 bg-red-600 text-white text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
             >
-              Review My Draft Menu
-              <i className="ri-arrow-right-line text-xl"></i>
+              Preview My Menu (Free)
+              <i className="ri-arrow-right-line text-2xl"></i>
             </Link>
-            <Link
-              href="/onboarding"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-red-600 border-2 border-red-600 text-lg font-bold rounded-lg hover:bg-red-50 transition-all"
-            >
-              <i className="ri-eye-line text-xl"></i>
-              See What You're Missing
-            </Link>
+            <p className="text-sm text-slate-500">
+              No credit card. Takes seconds.
+            </p>
           </div>
 
-          <p className="text-sm text-slate-500 mb-12">
-            Already built · Just review and publish · No credit card
+          <p className="text-sm text-slate-600 mb-12 max-w-2xl mx-auto bg-slate-100 px-6 py-3 rounded-lg border border-slate-200">
+            <i className="ri-line-chart-line text-green-600 mr-2"></i>
+            Restaurants using structured digital menus typically see higher order values and better reviews.
           </p>
         </FadeUp>
 
