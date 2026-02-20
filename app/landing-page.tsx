@@ -7,14 +7,50 @@ import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
 import { StickyMobileCTA } from '@/components/StickyMobileCTA';
 
 export default function LandingPage() {
-  // Mock Yelp review images data
+  // Mock Yelp review images data with realistic menu photos
   const mockYelpImages = [
-    { id: 1, reviewer: 'Sarah M.', date: 'Jan 15, 2026' },
-    { id: 2, reviewer: 'Mike R.', date: 'Jan 22, 2026' },
-    { id: 3, reviewer: 'Jessica L.', date: 'Feb 1, 2026' },
-    { id: 4, reviewer: 'David K.', date: 'Feb 5, 2026' },
-    { id: 5, reviewer: 'Amanda P.', date: 'Feb 8, 2026' },
-    { id: 6, reviewer: 'Chris W.', date: 'Feb 10, 2026' },
+    { 
+      id: 1, 
+      reviewer: 'Sarah M.', 
+      date: 'Jan 15, 2026',
+      imageUrl: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=400&h=400&fit=crop&auto=format',
+      rotation: 2
+    },
+    { 
+      id: 2, 
+      reviewer: 'Mike R.', 
+      date: 'Jan 22, 2026',
+      imageUrl: 'https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=400&h=400&fit=crop&auto=format',
+      rotation: -1
+    },
+    { 
+      id: 3, 
+      reviewer: 'Jessica L.', 
+      date: 'Feb 1, 2026',
+      imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=400&fit=crop&auto=format',
+      rotation: 3
+    },
+    { 
+      id: 4, 
+      reviewer: 'David K.', 
+      date: 'Feb 5, 2026',
+      imageUrl: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?w=400&h=400&fit=crop&auto=format',
+      rotation: -2
+    },
+    { 
+      id: 5, 
+      reviewer: 'Amanda P.', 
+      date: 'Feb 8, 2026',
+      imageUrl: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=400&fit=crop&auto=format',
+      rotation: 1
+    },
+    { 
+      id: 6, 
+      reviewer: 'Chris W.', 
+      date: 'Feb 10, 2026',
+      imageUrl: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=400&fit=crop&auto=format',
+      rotation: -3
+    },
   ];
 
   return (
@@ -115,7 +151,7 @@ export default function LandingPage() {
         </RevealOnScroll>
       </section>
 
-      {/* Yelp Visual Proof Section */}
+      {/* Yelp Visual Proof Section - Before vs After */}
       <section className="bg-white py-16 border-y-2 border-red-100">
         <RevealOnScroll>
           <div className="max-w-7xl mx-auto px-4">
@@ -126,9 +162,9 @@ export default function LandingPage() {
             Scattered menu photos from reviews vs. your structured digital version
           </p>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left: Yelp Images */}
-            <div>
+          <div className="grid md:grid-cols-2 gap-12 items-center relative">
+            {/* Left: Yelp Images (Cooler, Muted Tone) */}
+            <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 bg-red-600 text-white rounded flex items-center justify-center text-sm font-bold">
                   Y
@@ -141,17 +177,20 @@ export default function LandingPage() {
                 {mockYelpImages.map((img) => (
                   <div
                     key={img.id}
-                    className="aspect-square rounded-lg border border-red-200 overflow-hidden group hover:border-red-400 transition-all relative"
+                    style={{ 
+                      transform: `rotate(${img.rotation}deg)`,
+                    }}
+                    className="aspect-square rounded-lg border-2 border-red-300 overflow-hidden group hover:border-red-500 transition-all relative shadow-md"
                   >
                     <img
-                      src={`https://placehold.co/400x400/e2e8f0/64748b?text=Menu+${img.id}`}
+                      src={img.imageUrl}
                       alt={`Menu photo from ${img.reviewer}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover opacity-90 saturate-75 contrast-75"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 backdrop-blur-sm p-2">
                       <p className="text-white text-xs font-semibold truncate">
-                        Menu photo from review
+                        Photo from review
                       </p>
                       <p className="text-white/80 text-xs">
                         {img.reviewer} · {img.date}
@@ -166,17 +205,20 @@ export default function LandingPage() {
                 {mockYelpImages.map((img) => (
                   <div
                     key={img.id}
-                    className="flex-shrink-0 w-[280px] aspect-square rounded-lg border border-red-200 overflow-hidden snap-start relative"
+                    style={{ 
+                      transform: `rotate(${img.rotation}deg)`,
+                    }}
+                    className="flex-shrink-0 w-[280px] aspect-square rounded-lg border-2 border-red-300 overflow-hidden snap-start relative shadow-md"
                   >
                     <img
-                      src={`https://placehold.co/400x400/e2e8f0/64748b?text=Menu+${img.id}`}
+                      src={img.imageUrl}
                       alt={`Menu photo from ${img.reviewer}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover opacity-90 saturate-75 contrast-75"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 backdrop-blur-sm p-3">
                       <p className="text-white text-sm font-semibold">
-                        Menu photo from review
+                        Photo from review
                       </p>
                       <p className="text-white/80 text-xs">
                         {img.reviewer} · {img.date}
@@ -186,26 +228,47 @@ export default function LandingPage() {
                 ))}
               </div>
               
-              <p className="text-sm text-slate-500 mt-3">
-                ❌ Hard to read · Photos from different angles · Out of order
-              </p>
+              {/* Problem Statement */}
+              <div className="mt-4 space-y-1 text-sm text-slate-600">
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600">❌</span>
+                  <span>Hard to read</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600">❌</span>
+                  <span>Out of order</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600">❌</span>
+                  <span>Different angles</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600">❌</span>
+                  <span>Missing sections</span>
+                </div>
+              </div>
             </div>
 
             {/* Before → After Divider */}
-            <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center">
-              <div className="bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg whitespace-nowrap">
+            <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center z-10">
+              <div className="bg-gradient-to-r from-red-600 to-green-600 text-white px-6 py-3 rounded-full font-bold text-sm shadow-xl whitespace-nowrap animate-pulse">
                 Before → After
               </div>
             </div>
 
-            {/* Right: Structured Menu */}
-            <div>
+            {/* Right: Structured Menu (Brighter, More Contrast) */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl">
               <div className="flex items-center gap-2 mb-4">
                 <CheckCircle className="w-8 h-8 text-green-600" />
                 <h4 className="font-bold text-slate-900 text-lg">Your Structured Digital Version</h4>
               </div>
               
-              <div className="bg-white border-2 border-green-300 rounded-lg p-6 shadow-lg">
+              <div className="bg-white border-2 border-green-400 rounded-lg p-6 shadow-2xl relative ring-2 ring-green-200 ring-offset-2">
+                {/* Green Check Badge */}
+                <div className="absolute -top-3 -right-3 w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg">
+                  <CheckCircle className="w-6 h-6" />
+                </div>
+
                 <div className="mb-6">
                   <h5 className="text-2xl font-bold text-slate-900 mb-1">Sunrise Diner</h5>
                   <p className="text-slate-600 text-sm">American Diner · Orange, CA</p>
@@ -214,201 +277,211 @@ export default function LandingPage() {
                 <div className="space-y-4">
                   {/* Breakfast Category */}
                   <div>
-                    <h6 className="font-bold text-slate-900 mb-2 border-b border-slate-200 pb-1">
+                    <h6 className="font-bold text-slate-900 mb-2 border-b-2 border-slate-300 pb-1 uppercase text-xs tracking-wide">
                       Breakfast
                     </h6>
                     <div className="space-y-2">
-                      <div className="flex justify-between items-start">
+                      <div className="flex justify-between items-start gap-4">
                         <div className="flex-1">
-                          <p className="font-semibold text-slate-900 text-sm">Classic Pancakes</p>
+                          <p className="font-semibold text-slate-900 text-sm leading-tight">Classic Pancakes</p>
                           <p className="text-xs text-slate-600">Three fluffy buttermilk pancakes</p>
                         </div>
-                        <span className="font-bold text-red-600">$8.99</span>
+                        <span className="font-bold text-red-600 text-sm whitespace-nowrap">$8.99</span>
                       </div>
-                      <div className="flex justify-between items-start">
+                      <div className="flex justify-between items-start gap-4">
                         <div className="flex-1">
-                          <p className="font-semibold text-slate-900 text-sm">Sunrise Special</p>
+                          <p className="font-semibold text-slate-900 text-sm leading-tight">Sunrise Special</p>
                           <p className="text-xs text-slate-600">Two eggs, bacon, hash browns, toast</p>
                         </div>
-                        <span className="font-bold text-red-600">$12.99</span>
+                        <span className="font-bold text-red-600 text-sm whitespace-nowrap">$12.99</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Lunch Category */}
                   <div>
-                    <h6 className="font-bold text-slate-900 mb-2 border-b border-slate-200 pb-1">
+                    <h6 className="font-bold text-slate-900 mb-2 border-b-2 border-slate-300 pb-1 uppercase text-xs tracking-wide">
                       Lunch
                     </h6>
                     <div className="space-y-2">
-                      <div className="flex justify-between items-start">
+                      <div className="flex justify-between items-start gap-4">
                         <div className="flex-1">
-                          <p className="font-semibold text-slate-900 text-sm">Classic Burger</p>
+                          <p className="font-semibold text-slate-900 text-sm leading-tight">Classic Burger</p>
                           <p className="text-xs text-slate-600">Half-pound beef patty on brioche</p>
                         </div>
-                        <span className="font-bold text-red-600">$13.99</span>
+                        <span className="font-bold text-red-600 text-sm whitespace-nowrap">$13.99</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <p className="text-sm text-green-600 font-semibold mt-3">
-                ✓ Easy to read · Organized by category · Always up to date
-              </p>
+              {/* Benefits Statement */}
+              <div className="mt-4 space-y-1 text-sm text-slate-700 font-medium">
+                <div className="flex items-center gap-2">
+                  <span className="text-green-600">✓</span>
+                  <span>Easy to read</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-600">✓</span>
+                  <span>Organized by category</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-600">✓</span>
+                  <span>Always up to date</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-600">✓</span>
+                  <span>Works everywhere</span>
+                </div>
+              </div>
             </div>
           </div>
-          </div>
+        </div>
         </RevealOnScroll>
       </section>
 
       {/* Revenue Impact Section */}
       <section className="py-16 bg-slate-50">
         <RevealOnScroll>
-        <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3">
-            Digital menus increase revenue
-          </h3>
-          <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-            Restaurants with structured menus typically see measurable increases in order value and customer satisfaction.
-          </p>
+          <div className="max-w-6xl mx-auto px-4">
+            <h3 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3">
+              Digital menus increase revenue
+            </h3>
+            <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+              Restaurants with structured menus typically see measurable increases in order value and customer satisfaction.
+            </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              {
-                icon: DollarSign,
-                title: 'Higher average order values',
-                description: 'Clear descriptions and pricing encourage upsells and add-ons',
-                color: 'green',
-              },
-              {
-                icon: TrendingUp,
-                title: 'More add-ons selected',
-                description: 'Modifiers and extras are visible and easy to choose',
-                color: 'indigo',
-              },
-              {
-                icon: Star,
-                title: 'Better reviews from clarity',
-                description: 'Customers know what to expect before ordering',
-                color: 'amber',
-              },
-              {
-                icon: Eye,
-                title: 'Increased Google discoverability',
-                description: 'Digital menus improve search visibility and SEO',
-                color: 'blue',
-              },
-              {
-                icon: Zap,
-                title: 'Faster table turnover',
-                description: 'Customers decide faster when menu is clear',
-                color: 'purple',
-              },
-              {
-                icon: Users,
-                title: 'Higher customer confidence',
-                description: 'Professional presentation builds trust',
-                color: 'red',
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group"
-              >
-                <div className={`w-12 h-12 bg-${item.color}-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <item.icon className={`w-6 h-6 text-${item.color}-600`} />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <DollarSign className="w-6 h-6 text-green-600" />
                 </div>
-                <h4 className="font-bold text-slate-900 mb-2">
-                  {item.title}
-                </h4>
+                <h4 className="font-bold text-slate-900 mb-2">Higher average order values</h4>
                 <p className="text-sm text-slate-600">
-                  {item.description}
+                  Clear descriptions and pricing encourage upsells and add-ons
                 </p>
               </div>
-            ))}
-          </div>
 
-          {/* Conservative Callout */}
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-6 max-w-3xl mx-auto">
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <p className="text-slate-900 font-semibold mb-2">
-                  Conservative estimate based on industry data:
+              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
+                <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="w-6 h-6 text-indigo-600" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">More add-ons selected</h4>
+                <p className="text-sm text-slate-600">
+                  Modifiers and extras are visible and easy to choose
                 </p>
-                <p className="text-slate-700 text-sm">
-                  Restaurants with structured menus typically see measurable increases in order value and customer satisfaction. 
-                  While results vary, clear menu presentation consistently improves customer experience and business outcomes.
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
+                <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Star className="w-6 h-6 text-amber-600" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Better reviews from clarity</h4>
+                <p className="text-sm text-slate-600">
+                  Customers know what to expect before ordering
+                </p>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Eye className="w-6 h-6 text-blue-600" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Increased Google discoverability</h4>
+                <p className="text-sm text-slate-600">
+                  Digital menus improve search visibility and SEO
+                </p>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Zap className="w-6 h-6 text-purple-600" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Faster table turnover</h4>
+                <p className="text-sm text-slate-600">
+                  Customers decide faster when menu is clear
+                </p>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Users className="w-6 h-6 text-red-600" />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Higher customer confidence</h4>
+                <p className="text-sm text-slate-600">
+                  Professional presentation builds trust
+                </p>
+              </div>
+            </div>
+
+            {/* Conservative Claims Disclaimer */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-6 max-w-3xl mx-auto">
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                <div>
+                  <p className="text-slate-900 font-semibold mb-2">
+                    Conservative estimate based on industry data:
+                  </p>
+                  <p className="text-slate-700 text-sm">
+                    Restaurants with structured menus typically see measurable increases in order value and customer satisfaction. While results vary, clear menu presentation consistently improves customer experience and business outcomes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </RevealOnScroll>
+      </section>
+
+      {/* How It Works */}
+      <section className="bg-white py-16 border-t-2 border-red-100">
+        <RevealOnScroll>
+          <div className="max-w-6xl mx-auto px-4">
+            <h3 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3">
+              We Already Did The Work
+            </h3>
+            <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+              Your draft menu is ready. Just review and publish.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="w-16 h-16 bg-red-50 border-2 border-red-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-red-400 transition-colors">
+                  <span className="text-2xl font-bold text-red-600">1</span>
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">We scanned Yelp</h4>
+                <p className="text-slate-600">
+                  Found menu photos in your public reviews and extracted every item.
+                </p>
+              </div>
+
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="w-16 h-16 bg-green-50 border-2 border-green-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-green-400 transition-colors">
+                  <span className="text-2xl font-bold text-green-600">2</span>
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">You approve</h4>
+                <p className="text-slate-600">
+                  Review the draft, fix anything that needs attention, and publish.
+                </p>
+              </div>
+
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="w-16 h-16 bg-indigo-50 border-2 border-indigo-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-indigo-400 transition-colors">
+                  <span className="text-2xl font-bold text-indigo-600">3</span>
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">You share</h4>
+                <p className="text-slate-600">
+                  Get your link, QR codes, and share everywhere (Google, Instagram, tables).
                 </p>
               </div>
             </div>
           </div>
-        </div>
-        </RevealOnScroll>
-      </section>
-
-      {/* How it works */}
-      <section className="bg-white py-16 border-t-2 border-red-100">
-        <RevealOnScroll>
-        <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3">
-            We Already Did The Work
-          </h3>
-          <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-            Your draft menu is ready. Just review and publish.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                step: '1',
-                title: 'We scanned Yelp',
-                description: 'Found menu photos in your public reviews and extracted every item.',
-                color: 'red',
-                delay: 0,
-              },
-              {
-                step: '2',
-                title: 'You approve',
-                description: 'Review the draft, fix anything that needs attention, and publish.',
-                color: 'green',
-                delay: 0.2,
-              },
-              {
-                step: '3',
-                title: 'You share',
-                description: 'Get your link, QR codes, and share everywhere (Google, Instagram, tables).',
-                color: 'indigo',
-                delay: 0.4,
-              },
-            ].map((item) => (
-              <div 
-                key={item.step} 
-                className="text-center group hover:scale-105 transition-transform"
-              >
-                <div className={`w-16 h-16 bg-${item.color}-50 border-2 border-${item.color}-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-${item.color}-400 transition-colors`}>
-                  <span className={`text-2xl font-bold text-${item.color}-600`}>{item.step}</span>
-                </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">
-                  {item.title}
-                </h4>
-                <p className="text-slate-600">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
         </RevealOnScroll>
       </section>
 
       {/* Final CTA */}
       <section className="bg-gradient-to-br from-red-600 via-red-700 to-slate-900 py-16 border-t-4 border-red-500">
         <div className="max-w-3xl mx-auto px-4 text-center text-white">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Your menu is waiting
-          </h3>
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">Your menu is waiting</h3>
           <p className="text-xl mb-6 opacity-90">
             We already built your draft from Yelp. Review it now.
           </p>
