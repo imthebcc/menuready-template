@@ -32,6 +32,7 @@ export default function PreviewPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showEmailInput, setShowEmailInput] = useState(false);
+  const [showUpgradeMessage, setShowUpgradeMessage] = useState(false);
   const [email, setEmail] = useState('');
   const [confirmOwnership, setConfirmOwnership] = useState(false);
   const [publishing, setPublishing] = useState(false);
@@ -105,38 +106,10 @@ export default function PreviewPage() {
     }
   }
 
-  async function handleUpgrade(priceType: 'onetime' | 'subscription') {
-    // If no email yet, show email input first
-    if (!email) {
-      setShowEmailInput(true);
-      return;
-    }
-
-    try {
-      const res = await fetch('/api/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          slug,
-          email,
-          priceType,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        console.error('Checkout failed:', data.error);
-        setError(data.error || 'Failed to create checkout');
-        return;
-      }
-
-      // Redirect to Stripe checkout
-      window.location.href = data.url;
-    } catch (err) {
-      console.error('Checkout error:', err);
-      setError('Failed to create checkout. Please try again.');
-    }
+  function handleUpgrade() {
+    // For MVP: Show coming soon message instead of Stripe checkout
+    setShowUpgradeMessage(true);
+    setShowEmailInput(true);
   }
 
   if (loading) {
@@ -324,15 +297,22 @@ export default function PreviewPage() {
                   </div>
                 </div>
                 <button
-                  onClick={() => handleUpgrade('onetime')}
+                  onClick={handleUpgrade}
                   className="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 transition-all mb-2"
                 >
                   Upgrade — $99 one-time
                 </button>
+                {showUpgradeMessage && (
+                  <div className="mb-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <p className="text-sm text-blue-700 text-center">
+                      Coming soon — enter your email and we'll notify you when paid plans launch.
+                    </p>
+                  </div>
+                )}
                 <p className="text-xs text-amber-600 text-center mb-2">
                   ⏰ Offer expires in 24 hours
                 </p>
-                <p className="text-xs text-slate-500 text-center">Priority listing + custom domain</p>
+                <p className="text-xs text-slate-500 text-center">Priority listing + Yelp submission</p>
               </div>
 
               {/* Source */}
