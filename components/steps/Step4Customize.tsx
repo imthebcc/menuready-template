@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link2, Palette, Globe, ShoppingCart, Sparkles, Smartphone, Loader2 } from 'lucide-react';
 import { useOnboardingStore } from '@/lib/store';
 import { checkSlugAvailability, publishMenu } from '@/lib/mockApi';
+import { YelpUploadServiceCard } from '@/components/YelpUploadServiceCard';
 
 export function Step4Customize() {
   const {
@@ -19,6 +20,7 @@ export function Step4Customize() {
   const [slugInput, setSlugInput] = useState(settings.slug || '');
   const [slugAvailable, setSlugAvailable] = useState<boolean | null>(null);
   const [checkingSlug, setCheckingSlug] = useState(false);
+  const [yelpServiceSelected, setYelpServiceSelected] = useState(false);
 
   // Initialize slug from restaurant name
   useEffect(() => {
@@ -76,7 +78,7 @@ export function Step4Customize() {
 
       <div className="grid md:grid-cols-2 gap-8 mb-8">
         {/* Settings form */}
-        <div className="space-y-6">
+        <div className="space-y-6 order-2 md:order-1">
           {/* URL slug */}
           <div>
             <label className="block text-sm font-semibold text-slate-900 mb-2">
@@ -184,10 +186,18 @@ export function Step4Customize() {
               />
             )}
           </div>
+
+          {/* Yelp Upload Service Upsell */}
+          <div className="pt-6">
+            <YelpUploadServiceCard
+              selected={yelpServiceSelected}
+              onSelect={setYelpServiceSelected}
+            />
+          </div>
         </div>
 
         {/* Preview */}
-        <div>
+        <div className="order-1 md:order-2">
           <div className="sticky top-4">
             <label className="block text-sm font-semibold text-slate-900 mb-3">
               <Smartphone className="w-4 h-4 inline mr-1" />
@@ -264,10 +274,17 @@ export function Step4Customize() {
               <Loader2 className="w-5 h-5 animate-spin" />
               Publishing your menu...
             </>
+          ) : yelpServiceSelected ? (
+            'Publish + Request Yelp Upload ($49)'
           ) : (
-            'Publish Menu'
+            'Publish Menu (DIY)'
           )}
         </button>
+        {yelpServiceSelected && !isPublishing && (
+          <p className="text-sm text-indigo-600 text-center mt-2">
+            ✓ Yelp upload service included - we'll handle it for you
+          </p>
+        )}
       </div>
     </div>
   );

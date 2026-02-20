@@ -80,13 +80,13 @@ export function Step2Sources() {
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          Menu Photos Found
+          We found these menu photos on public Yelp reviews
         </h2>
         <p className="text-lg text-slate-600 mb-2">
-          We found <span className="font-semibold text-indigo-600">{menuPhotoCount} menu photos</span> from public Yelp reviews
+          <span className="font-semibold text-indigo-600">{menuPhotoCount} menu photos</span> from {images.length} public review images
         </p>
         <p className="text-sm text-slate-500">
-          These images will be used to create your digital menu
+          Source attribution shown for transparency
         </p>
       </div>
 
@@ -187,10 +187,10 @@ export function Step2Sources() {
           {isGeneratingDraft ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />
-              Creating your menu draft...
+              Loading your draft menu...
             </>
           ) : (
-            `Generate Draft Menu (${menuPhotoCount} photos)`
+            `View My Draft Menu`
           )}
         </button>
       </div>

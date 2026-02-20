@@ -61,10 +61,13 @@ export function Step1Identify() {
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          Find Your Restaurant
+          Your menu is already on Yelp
         </h2>
-        <p className="text-lg text-slate-600">
-          We'll check if you already have menu photos on Yelp
+        <p className="text-lg text-slate-600 mb-2">
+          We digitized it for you
+        </p>
+        <p className="text-sm text-slate-500">
+          We found public Yelp review photos and created a draft menu
         </p>
       </div>
 
@@ -168,9 +171,14 @@ export function Step1Identify() {
                     <Phone className="w-4 h-4" />
                     <span>{restaurant.phone}</span>
                   </div>
-                  <p className="text-sm text-indigo-600 font-medium mt-2">
-                    {restaurant.cuisine}
-                  </p>
+                  <div className="flex items-center gap-3 mt-2">
+                    <p className="text-sm text-indigo-600 font-medium">
+                      {restaurant.cuisine}
+                    </p>
+                    <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">
+                      ✓ We found 6 menu photos
+                    </span>
+                  </div>
                 </div>
                 <ChevronRight
                   className={`w-5 h-5 flex-shrink-0 ml-4 transition-colors ${

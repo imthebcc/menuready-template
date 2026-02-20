@@ -14,6 +14,7 @@ export function Step3ReviewMenu() {
   const [editingItem, setEditingItem] = useState<string | null>(null);
   const [reviewQueue] = useState(mockReviewQueue);
   const [resolvedItems, setResolvedItems] = useState<Set<string>>(new Set());
+  const [acknowledgedIssues, setAcknowledgedIssues] = useState(false);
 
   if (!menuDraft) return null;
 
@@ -74,28 +75,28 @@ export function Step3ReviewMenu() {
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          Review Your Menu
+          We did the heavy lifting
         </h2>
         <p className="text-lg text-slate-600 mb-2">
-          We extracted {menuDraft.categories.reduce((sum, cat) => sum + cat.items.length, 0)} items
-          from your menu photos
+          Extracted {menuDraft.categories.reduce((sum, cat) => sum + cat.items.length, 0)} items
+          from {menuDraft.categories.length} categories
         </p>
         <p className="text-sm text-slate-500">
-          Edit anything before publishing. You're in control.
+          You approve. Edit anything before publishing.
         </p>
       </div>
 
       {/* Review queue alert */}
       {unresolvedCount > 0 && (
-        <div className="mb-6 bg-amber-50 border border-amber-300 rounded-lg p-4">
+        <div className="mb-6 bg-amber-50 border-2 border-amber-400 rounded-lg p-4">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-amber-900 mb-1">
-                {unresolvedCount} items need review
+              <h3 className="font-bold text-amber-900 mb-1 text-lg">
+                {unresolvedCount} items need your attention
               </h3>
               <p className="text-sm text-amber-800 mb-3">
-                Some items have low confidence or formatting issues. Review them below.
+                We did the heavy lifting. Review these items before publishing.
               </p>
               <div className="space-y-2">
                 {reviewQueue
@@ -139,6 +140,26 @@ export function Step3ReviewMenu() {
                       </div>
                     );
                   })}
+              </div>
+              
+              {/* Acknowledgement option */}
+              <div className="mt-4 pt-4 border-t border-amber-200">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={acknowledgedIssues}
+                    onChange={(e) => setAcknowledgedIssues(e.target.checked)}
+                    className="mt-1 w-4 h-4 text-indigo-600 rounded focus:ring-2 focus:ring-indigo-100"
+                  />
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-slate-900">
+                      I acknowledge these issues and want to publish anyway
+                    </p>
+                    <p className="text-xs text-slate-600 mt-1">
+                      You can always update your menu after publishing
+                    </p>
+                  </div>
+                </label>
               </div>
             </div>
           </div>
@@ -264,13 +285,18 @@ export function Step3ReviewMenu() {
       <div className="sticky bottom-0 left-0 right-0 bg-white border-t p-4 -mx-4 md:static md:border-0 md:p-0 md:m-0">
         <button
           onClick={handleApprove}
-          disabled={unresolvedCount > 0}
+          disabled={unresolvedCount > 0 && !acknowledgedIssues}
           className="w-full py-4 bg-indigo-600 text-white font-semibold text-lg rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-lg hover:shadow-xl"
         >
-          {unresolvedCount > 0
-            ? `Review ${unresolvedCount} items before approving`
+          {unresolvedCount > 0 && !acknowledgedIssues
+            ? `Fix ${unresolvedCount} items or acknowledge to continue`
             : 'Approve Menu Draft'}
         </button>
+        {unresolvedCount > 0 && acknowledgedIssues && (
+          <p className="text-sm text-amber-600 text-center mt-2">
+            ⚠️ Publishing with {unresolvedCount} unresolved items
+          </p>
+        )}
       </div>
     </div>
   );
