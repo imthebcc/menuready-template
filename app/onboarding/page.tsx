@@ -36,7 +36,7 @@ export default function OnboardingPage() {
       filter: 'blur(0px)',
       transition: {
         duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
+        ease: 'easeOut' as const,
       },
     },
     exit: (direction: number) => ({
@@ -45,7 +45,7 @@ export default function OnboardingPage() {
       filter: 'blur(10px)',
       transition: {
         duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
+        ease: 'easeOut' as const,
       },
     }),
   };
