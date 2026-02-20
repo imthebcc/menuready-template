@@ -42,20 +42,29 @@ export default function PreviewPage() {
 
   async function fetchRestaurantData() {
     try {
+      console.log('[Preview] Fetching restaurant:', slug);
       const res = await fetch(`/api/restaurants/${slug}`);
       const data = await res.json();
 
+      console.log('[Preview] API response:', { ok: res.ok, status: res.status, data });
+
       if (!res.ok) {
-        setError(data.error || 'Restaurant not found');
+        const errorMsg = data.error || 'Restaurant not found';
+        console.error('[Preview] API error:', errorMsg, data);
+        setError(errorMsg);
         setLoading(false);
         return;
       }
+
+      console.log('[Preview] Restaurant loaded:', data.restaurant?.name);
+      console.log('[Preview] Menu categories:', data.menu?.length);
 
       setRestaurant(data.restaurant);
       setMenu(data.menu);
       setLoading(false);
     } catch (err) {
-      setError('Failed to load restaurant data');
+      console.error('[Preview] Fetch error:', err);
+      setError(`Failed to load restaurant data: ${err instanceof Error ? err.message : 'Unknown error'}`);
       setLoading(false);
     }
   }

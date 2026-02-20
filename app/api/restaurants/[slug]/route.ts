@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
 import fs from 'fs';
 import path from 'path';
 
@@ -10,21 +9,9 @@ export async function GET(
   try {
     const { slug } = await params;
 
-    // Fetch restaurant from Supabase
-    const { data: restaurant, error: restaurantError } = await supabase
-      .from('restaurants')
-      .select('*')
-      .eq('slug', slug)
-      .single();
+    console.log('[API] Fetching restaurant:', slug);
 
-    if (restaurantError || !restaurant) {
-      return NextResponse.json(
-        { error: 'Restaurant not found' },
-        { status: 404 }
-      );
-    }
-
-    // Load menu data from file system (for MVP, later move to DB)
+    // Load menu data from file system
     const menuPath = path.join(
       process.cwd(),
       'data',
@@ -37,21 +24,38 @@ export async function GET(
     try {
       const menuFile = fs.readFileSync(menuPath, 'utf-8');
       menuData = JSON.parse(menuFile);
+      console.log('[API] Menu loaded successfully:', menuData.length || 0, 'categories');
     } catch (err) {
+      console.error('[API] Menu file not found:', menuPath, err);
       return NextResponse.json(
-        { error: 'Menu data not found' },
+        { error: 'Menu data not found', slug, path: menuPath },
         { status: 404 }
       );
     }
+
+    // Create mock restaurant data from slug
+    // In production, this would come from Supabase
+    const restaurant = {
+      id: slug,
+      slug: slug,
+      name: slug
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' '),
+      location: 'Location from data',
+      created_at: new Date().toISOString(),
+    };
+
+    console.log('[API] Returning restaurant:', restaurant.name);
 
     return NextResponse.json({
       restaurant,
       menu: menuData,
     });
   } catch (error) {
-    console.error('Error fetching restaurant:', error);
+    console.error('[API] Error fetching restaurant:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', message: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }
