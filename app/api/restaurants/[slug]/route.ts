@@ -20,11 +20,11 @@ export async function GET(
       'menu.json'
     );
 
-    let menuData;
+    let menuFile;
     try {
-      const menuFile = fs.readFileSync(menuPath, 'utf-8');
-      menuData = JSON.parse(menuFile);
-      console.log('[API] Menu loaded successfully:', menuData.length || 0, 'categories');
+      const fileContent = fs.readFileSync(menuPath, 'utf-8');
+      menuFile = JSON.parse(fileContent);
+      console.log('[API] Menu file loaded, has categories:', !!menuFile.categories);
     } catch (err) {
       console.error('[API] Menu file not found:', menuPath, err);
       return NextResponse.json(
@@ -33,16 +33,29 @@ export async function GET(
       );
     }
 
-    // Create mock restaurant data from slug
-    // In production, this would come from Supabase
+    // Transform menu.json structure to match preview page expectations
+    // menu.json has: { categories: [{ name, items }] }
+    // Preview expects: { menu: [{ category, items }] }
+    const menuData = menuFile.categories?.map((cat: any) => ({
+      category: cat.name,
+      items: cat.items.map((item: any) => ({
+        name: item.name,
+        price: `$${item.price}`,
+        description: item.description || undefined,
+      })),
+    })) || [];
+
+    console.log('[API] Transformed menu:', menuData.length, 'categories');
+
+    // Create restaurant data from menu.json or slug
     const restaurant = {
       id: slug,
       slug: slug,
-      name: slug
+      name: menuFile.restaurant || slug
         .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' '),
-      location: 'Location from data',
+      location: menuFile.location || 'Location not specified',
       created_at: new Date().toISOString(),
     };
 

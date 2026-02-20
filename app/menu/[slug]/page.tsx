@@ -47,7 +47,7 @@ export default function MenuPage() {
       }
 
       setRestaurant(data.restaurant);
-      setMenu(data.menu);
+      setMenu(data.menu || []);
       setLoading(false);
     } catch (err) {
       setError('Failed to load menu');
@@ -103,7 +103,7 @@ export default function MenuPage() {
       {/* Menu Content */}
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 md:p-8">
-          {menu.map((category, idx) => (
+          {menu && menu.length > 0 ? menu.map((category, idx) => (
             <div key={idx} className="mb-10 last:mb-0">
               <h2 className="text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide border-b-2 border-red-600 pb-2">
                 {category.category}
@@ -126,7 +126,11 @@ export default function MenuPage() {
                 ))}
               </div>
             </div>
-          ))}
+          )) : (
+            <div className="text-center py-8 text-slate-500">
+              <p>No menu items available.</p>
+            </div>
+          )}
         </div>
 
         {/* Footer CTA */}

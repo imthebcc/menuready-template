@@ -60,7 +60,7 @@ export default function PreviewPage() {
       console.log('[Preview] Menu categories:', data.menu?.length);
 
       setRestaurant(data.restaurant);
-      setMenu(data.menu);
+      setMenu(data.menu || []);
       setLoading(false);
     } catch (err) {
       console.error('[Preview] Fetch error:', err);
@@ -194,7 +194,7 @@ export default function PreviewPage() {
               <h2 className="text-2xl font-bold text-slate-900 mb-1">{restaurant.name}</h2>
               <p className="text-slate-600 mb-6">{restaurant.location}</p>
 
-              {menu.map((category, idx) => (
+              {menu && menu.length > 0 ? menu.map((category, idx) => (
                 <div key={idx} className="mb-8 last:mb-0">
                   <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide border-b-2 border-red-600 pb-2">
                     {category.category}
@@ -213,7 +213,11 @@ export default function PreviewPage() {
                     ))}
                   </div>
                 </div>
-              ))}
+              )) : (
+                <div className="text-center py-8 text-slate-500">
+                  <p>No menu items found.</p>
+                </div>
+              )}
             </div>
           </div>
 
