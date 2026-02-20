@@ -109,7 +109,7 @@ export default function LandingPage() {
         <FadeUp delay={0.26}>
           <div className="flex flex-col items-center gap-4 mb-6">
             <Link
-              href="/onboarding"
+              href="/preview/harbor-diner-huntington-beach"
               className="inline-flex items-center gap-2 px-10 py-5 bg-red-600 text-white text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
             >
               Preview My Menu (Free)
@@ -471,7 +471,7 @@ export default function LandingPage() {
             <span>✓ Free to publish</span>
           </div>
           <Link
-            href="/onboarding"
+            href="/preview/harbor-diner-huntington-beach"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-red-600 text-lg font-bold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
           >
             See My Menu Draft (Free)
