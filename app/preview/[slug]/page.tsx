@@ -170,6 +170,24 @@ export default function PreviewPage() {
       className="min-h-screen bg-slate-50"
       onContextMenu={(e) => e.preventDefault()}
     >
+      {/* Full-Page Watermark Overlay */}
+      <div className="fixed inset-0 pointer-events-none select-none overflow-hidden z-10">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute whitespace-nowrap text-gray-300 text-sm font-medium opacity-30"
+            style={{
+              transform: 'rotate(-30deg)',
+              top: `${i * 80 - 200}px`,
+              left: '-100px',
+              letterSpacing: '8px'
+            }}
+          >
+            PREVIEW · MENUS READY · PREVIEW · MENUS READY · PREVIEW · MENUS READY
+          </div>
+        ))}
+      </div>
+
       {/* Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -231,26 +249,8 @@ export default function PreviewPage() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-8">
-        {/* Menu Preview with Watermark */}
+        {/* Menu Preview */}
         <div className="relative">
-          {/* Watermark Overlay - Diagonal repeating text */}
-          <div className="absolute inset-0 z-10 pointer-events-none select-none overflow-hidden">
-            {Array.from({ length: 15 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute whitespace-nowrap text-gray-300 text-sm font-medium opacity-40"
-                style={{
-                  transform: 'rotate(-30deg)',
-                  top: `${i * 60 - 100}px`,
-                  left: '-50px',
-                  letterSpacing: '8px'
-                }}
-              >
-                PREVIEW · MENUS READY · PREVIEW · MENUS READY · PREVIEW · MENUS READY
-              </div>
-            ))}
-          </div>
-
           {/* Expired Blur Overlay */}
           {expired && (
             <div className="absolute inset-0 z-20 backdrop-blur-md bg-white/50 pointer-events-none" />
