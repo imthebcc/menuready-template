@@ -85,42 +85,42 @@ export default function LandingPage() {
       </div>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-4 py-16 md:py-20 text-center">
+      <section className="max-w-6xl mx-auto px-4 py-12 md:py-20 text-center">
         <FadeUp delay={0.05}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm font-semibold mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm md:text-base font-semibold mb-6 shadow-sm">
             <i className="ri-checkbox-circle-fill text-green-600"></i>
-            Revenue Opportunity Identified
+            <span className="text-sm md:text-base">Revenue Opportunity Identified</span>
           </div>
         </FadeUp>
         
         <FadeUp delay={0.10}>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight px-2">
             We already built your<br />
             <span className="text-red-600">digital menu</span>
           </h2>
         </FadeUp>
         
         <FadeUp delay={0.18}>
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed px-2">
             Your menu is already built. Just review it and make it live — free.
           </p>
         </FadeUp>
 
         <FadeUp delay={0.26}>
-          <div className="flex flex-col items-center gap-4 mb-6">
+          <div className="flex flex-col items-stretch gap-4 mb-6 max-w-md mx-auto">
             <Link
               href="/preview/harbor-diner-huntington-beach"
-              className="inline-flex items-center gap-2 px-10 py-5 bg-red-600 text-white text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
+              className="w-full flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-red-600 text-white text-lg sm:text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
             >
               Preview My Menu (Free)
-              <i className="ri-arrow-right-line text-2xl"></i>
+              <i className="ri-arrow-right-line text-xl sm:text-2xl"></i>
             </Link>
-            <p className="text-sm text-slate-500">
+            <p className="text-base sm:text-sm text-slate-500 text-center">
               No credit card. Takes seconds.
             </p>
           </div>
 
-          <p className="text-sm text-slate-600 mb-12 max-w-2xl mx-auto bg-slate-100 px-6 py-3 rounded-lg border border-slate-200">
+          <p className="text-base sm:text-sm text-slate-600 mb-8 max-w-2xl mx-auto bg-slate-100 px-4 sm:px-6 py-4 rounded-lg border border-slate-200 leading-relaxed">
             <i className="ri-line-chart-line text-green-600 mr-2"></i>
             Restaurants using structured digital menus typically see higher order values and better reviews.
           </p>
@@ -145,13 +145,13 @@ export default function LandingPage() {
       </section>
 
       {/* Yelp Visual Proof Section - Before vs After */}
-      <section className="bg-white py-16 border-y-2 border-red-100">
+      <section className="bg-white py-8 md:py-16 border-y-2 border-red-100">
         <RevealOnScroll>
           <div className="max-w-7xl mx-auto px-4">
-          <h3 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3 leading-tight">
             Here's what customers see on Yelp right now
           </h3>
-          <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-slate-600 mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg px-2">
             Scattered menu photos from reviews vs. your structured digital version
           </p>
 
@@ -193,15 +193,15 @@ export default function LandingPage() {
                 ))}
               </div>
 
-              {/* Mobile Scroll */}
-              <div className="md:hidden flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory">
-                {mockYelpImages.map((img) => (
+              {/* Mobile Scroll - Show only first 3 photos */}
+              <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-2 px-2">
+                {mockYelpImages.slice(0, 3).map((img) => (
                   <div
                     key={img.id}
                     style={{ 
                       transform: `rotate(${img.rotation}deg)`,
                     }}
-                    className="flex-shrink-0 w-[280px] aspect-square rounded-lg border-2 border-red-300 overflow-hidden snap-start relative shadow-md"
+                    className="flex-shrink-0 w-[calc(100vw-6rem)] max-w-[280px] aspect-square rounded-lg border-2 border-red-300 overflow-hidden snap-center relative shadow-md"
                   >
                     <img
                       src={img.imageUrl}
@@ -222,22 +222,22 @@ export default function LandingPage() {
               </div>
               
               {/* Problem Statement */}
-              <div className="mt-4 space-y-1 text-sm text-slate-600">
+              <div className="mt-4 grid grid-cols-2 gap-2 md:space-y-1 md:grid-cols-1 text-sm md:text-base text-slate-700">
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600">❌</span>
-                  <span>Hard to read</span>
+                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="font-medium">Hard to read</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600">❌</span>
-                  <span>Out of order</span>
+                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="font-medium">Out of order</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600">❌</span>
-                  <span>Different angles</span>
+                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="font-medium">Different angles</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600">❌</span>
-                  <span>Missing sections</span>
+                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="font-medium">Missing sections</span>
                 </div>
               </div>
             </div>
@@ -250,53 +250,53 @@ export default function LandingPage() {
             </div>
 
             {/* Right: Structured Menu (Clean White Background) */}
-            <div className="bg-white p-6 rounded-xl">
+            <div className="bg-white p-4 sm:p-6 rounded-xl">
               <div className="flex items-center gap-2 mb-4">
-                <i className="ri-checkbox-circle-line text-3xl text-green-600"></i>
-                <h4 className="font-bold text-slate-900 text-lg">Your Structured Digital Version</h4>
+                <i className="ri-checkbox-circle-line text-2xl sm:text-3xl text-green-600"></i>
+                <h4 className="font-bold text-slate-900 text-base sm:text-lg">Your Structured Digital Version</h4>
               </div>
               
-              <div className="bg-white border-2 border-green-400 rounded-lg p-6 shadow-2xl relative ring-2 ring-green-200 ring-offset-2">
+              <div className="bg-white border-2 border-green-400 rounded-lg p-4 sm:p-6 shadow-2xl relative ring-2 ring-green-200 ring-offset-2">
                 {/* Green Check Badge */}
                 <div className="absolute -top-3 -right-3 w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg">
                   <i className="ri-checkbox-circle-line text-2xl"></i>
                 </div>
 
                 <div className="mb-6">
-                  <h5 className="text-2xl font-bold text-slate-900 mb-1">Sunrise Diner</h5>
-                  <p className="text-slate-600 text-sm">American Diner · Orange, CA</p>
+                  <h5 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1">Sunrise Diner</h5>
+                  <p className="text-slate-600 text-sm sm:text-base">American Diner · Orange, CA</p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4 sm:space-y-5">
                   {/* Breakfast Category */}
                   <div>
-                    <h6 className="font-bold text-slate-900 mb-2 border-b-2 border-slate-300 pb-1 uppercase text-xs tracking-wide">
-                      Breakfast
+                    <h6 className="font-bold text-slate-900 mb-3 border-b-2 border-slate-300 pb-2 uppercase text-sm sm:text-xs tracking-wide">
+                      BREAKFAST
                     </h6>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-start gap-4">
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-start gap-3">
                         <div className="flex-1">
-                          <p className="font-semibold text-slate-900 text-sm leading-tight">Classic Pancakes</p>
-                          <p className="text-xs text-slate-600">Three fluffy buttermilk pancakes</p>
+                          <p className="font-semibold text-slate-900 text-base sm:text-sm leading-tight mb-1">Classic Pancakes</p>
+                          <p className="text-sm sm:text-xs text-slate-600 leading-relaxed">Three fluffy buttermilk pancakes</p>
                         </div>
-                        <span className="font-bold text-red-600 text-sm whitespace-nowrap">$8.99</span>
+                        <span className="font-bold text-red-600 text-base sm:text-sm whitespace-nowrap">$8.99</span>
                       </div>
-                      <div className="flex justify-between items-start gap-4">
+                      <div className="flex justify-between items-start gap-3">
                         <div className="flex-1">
-                          <p className="font-semibold text-slate-900 text-sm leading-tight">Sunrise Special</p>
-                          <p className="text-xs text-slate-600">Two eggs, bacon, hash browns, toast</p>
+                          <p className="font-semibold text-slate-900 text-base sm:text-sm leading-tight mb-1">Sunrise Special</p>
+                          <p className="text-sm sm:text-xs text-slate-600 leading-relaxed">Two eggs, bacon, hash browns, toast</p>
                         </div>
-                        <span className="font-bold text-red-600 text-sm whitespace-nowrap">$12.99</span>
+                        <span className="font-bold text-red-600 text-base sm:text-sm whitespace-nowrap">$12.99</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Lunch Category */}
                   <div>
-                    <h6 className="font-bold text-slate-900 mb-2 border-b-2 border-slate-300 pb-1 uppercase text-xs tracking-wide">
-                      Lunch
+                    <h6 className="font-bold text-slate-900 mb-3 border-b-2 border-slate-300 pb-2 uppercase text-sm sm:text-xs tracking-wide">
+                      LUNCH
                     </h6>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <div className="flex justify-between items-start gap-4">
                         <div className="flex-1">
                           <p className="font-semibold text-slate-900 text-sm leading-tight">Classic Burger</p>
@@ -345,63 +345,75 @@ export default function LandingPage() {
               Restaurants with structured menus typically see measurable increases in order value and customer satisfaction.
             </p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <i className="ri-money-dollar-circle-line text-2xl text-green-600"></i>
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12 max-w-xl md:max-w-none mx-auto">
+              <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-sm hover:shadow-lg transition-all group w-full">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <i className="ri-money-dollar-circle-line text-2xl text-green-600"></i>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base sm:text-lg">Higher average order values</h4>
                 </div>
-                <h4 className="font-bold text-slate-900 mb-2">Higher average order values</h4>
-                <p className="text-sm text-slate-600">
+                <p className="text-base sm:text-sm text-slate-600 leading-relaxed">
                   Clear descriptions and pricing encourage upsells and add-ons
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <i className="ri-line-chart-line text-2xl text-indigo-600"></i>
+              <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-sm hover:shadow-lg transition-all group w-full">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <i className="ri-line-chart-line text-2xl text-indigo-600"></i>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base sm:text-lg">More add-ons selected</h4>
                 </div>
-                <h4 className="font-bold text-slate-900 mb-2">More add-ons selected</h4>
-                <p className="text-sm text-slate-600">
+                <p className="text-base sm:text-sm text-slate-600 leading-relaxed">
                   Modifiers and extras are visible and easy to choose
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <i className="ri-star-line text-2xl text-amber-600"></i>
+              <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-sm hover:shadow-lg transition-all group w-full">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <i className="ri-star-line text-2xl text-amber-600"></i>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base sm:text-lg">Better reviews from clarity</h4>
                 </div>
-                <h4 className="font-bold text-slate-900 mb-2">Better reviews from clarity</h4>
-                <p className="text-sm text-slate-600">
+                <p className="text-base sm:text-sm text-slate-600 leading-relaxed">
                   Customers know what to expect before ordering
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <i className="ri-eye-line text-2xl text-blue-600"></i>
+              <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-sm hover:shadow-lg transition-all group w-full">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <i className="ri-eye-line text-2xl text-blue-600"></i>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base sm:text-lg">Increased Google discoverability</h4>
                 </div>
-                <h4 className="font-bold text-slate-900 mb-2">Increased Google discoverability</h4>
-                <p className="text-sm text-slate-600">
+                <p className="text-base sm:text-sm text-slate-600 leading-relaxed">
                   A structured digital menu makes your items indexable by Google, so customers find you before they find a competitor.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <i className="ri-flashlight-line text-2xl text-purple-600"></i>
+              <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-sm hover:shadow-lg transition-all group w-full">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <i className="ri-flashlight-line text-2xl text-purple-600"></i>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base sm:text-lg">Faster table turnover</h4>
                 </div>
-                <h4 className="font-bold text-slate-900 mb-2">Faster table turnover</h4>
-                <p className="text-sm text-slate-600">
+                <p className="text-base sm:text-sm text-slate-600 leading-relaxed">
                   Customers who know what they want before they sit down order faster and leave happier.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all group">
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <i className="ri-team-line text-2xl text-red-600"></i>
+              <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 shadow-sm hover:shadow-lg transition-all group w-full">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <i className="ri-team-line text-2xl text-red-600"></i>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-base sm:text-lg">Higher customer confidence</h4>
                 </div>
-                <h4 className="font-bold text-slate-900 mb-2">Higher customer confidence</h4>
-                <p className="text-sm text-slate-600">
+                <p className="text-base sm:text-sm text-slate-600 leading-relaxed">
                   A clean, professional menu tells customers your restaurant takes quality seriously — before they ever taste the food.
                 </p>
               </div>
@@ -472,7 +484,7 @@ export default function LandingPage() {
           </div>
           <Link
             href="/preview/harbor-diner-huntington-beach"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-red-600 text-lg font-bold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
+            className="w-full max-w-md mx-auto flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-white text-red-600 text-lg sm:text-xl font-bold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
           >
             See My Menu Draft (Free)
             <i className="ri-arrow-right-line text-xl"></i>
