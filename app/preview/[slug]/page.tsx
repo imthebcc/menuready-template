@@ -20,6 +20,7 @@ interface Restaurant {
   slug: string;
   name: string;
   location: string;
+  paid?: boolean;
 }
 
 export default function PreviewPage() {
@@ -38,8 +39,14 @@ export default function PreviewPage() {
     localStorage.removeItem(`preview_expiry_${slug}`);
     
     fetchRestaurantData();
-    initializeTimer();
   }, [slug]);
+
+  useEffect(() => {
+    // Only initialize timer if not paid
+    if (restaurant && !restaurant.paid) {
+      initializeTimer();
+    }
+  }, [restaurant]);
 
   useEffect(() => {
     // Check expiry every 10 seconds (no visible countdown)
@@ -170,23 +177,25 @@ export default function PreviewPage() {
       className="min-h-screen bg-slate-50"
       onContextMenu={(e) => e.preventDefault()}
     >
-      {/* Full-Page Watermark Overlay */}
-      <div className="fixed inset-0 pointer-events-none select-none overflow-hidden z-10">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute whitespace-nowrap text-gray-300 text-sm font-medium opacity-30"
-            style={{
-              transform: 'rotate(-30deg)',
-              top: `${i * 80 - 200}px`,
-              left: '-100px',
-              letterSpacing: '8px'
-            }}
-          >
-            PREVIEW · MENUS READY · PREVIEW · MENUS READY · PREVIEW · MENUS READY
-          </div>
-        ))}
-      </div>
+      {/* Full-Page Watermark Overlay - Only if not paid */}
+      {!restaurant?.paid && (
+        <div className="fixed inset-0 pointer-events-none select-none overflow-hidden z-10">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute whitespace-nowrap text-gray-300 text-sm font-medium opacity-30"
+              style={{
+                transform: 'rotate(-30deg)',
+                top: `${i * 80 - 200}px`,
+                left: '-100px',
+                letterSpacing: '8px'
+              }}
+            >
+              PREVIEW · MENUS READY · PREVIEW · MENUS READY · PREVIEW · MENUS READY
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -200,8 +209,25 @@ export default function PreviewPage() {
         </div>
       </header>
 
-      {/* Publish Banner */}
-      {!expired && (
+      {/* Live Banner - Show if paid */}
+      {restaurant?.paid && (
+        <div className="bg-green-50 border-b border-green-200 px-4 py-6">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <i className="ri-checkbox-circle-fill text-3xl text-green-600"></i>
+              <h2 className="text-xl md:text-2xl font-bold text-slate-900">
+                Your menu is live!
+              </h2>
+            </div>
+            <p className="text-base text-slate-700">
+              Your digital menu for <strong>{restaurant?.name}</strong> is published and ready to share.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Publish Banner - Show if not paid and not expired */}
+      {!restaurant?.paid && !expired && (
         <div className="bg-amber-50 border-b border-amber-200 px-4 py-6">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
@@ -226,8 +252,8 @@ export default function PreviewPage() {
         </div>
       )}
 
-      {/* Expired State */}
-      {expired && (
+      {/* Expired State - Only if not paid */}
+      {!restaurant?.paid && expired && (
         <div className="bg-red-50 border-b border-red-200 px-4 py-6">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
@@ -251,8 +277,8 @@ export default function PreviewPage() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Menu Preview */}
         <div className="relative">
-          {/* Expired Blur Overlay */}
-          {expired && (
+          {/* Expired Blur Overlay - Only if not paid */}
+          {!restaurant?.paid && expired && (
             <div className="absolute inset-0 z-20 backdrop-blur-md bg-white/50 pointer-events-none" />
           )}
 
@@ -295,8 +321,8 @@ export default function PreviewPage() {
           </div>
         </div>
 
-        {/* Footer CTA */}
-        {!expired && (
+        {/* Footer CTA - Only if not paid */}
+        {!restaurant?.paid && !expired && (
           <div className="mt-8 text-center">
             <p className="text-sm text-slate-500">
               Click "Publish" above to get your live menu link and QR code

@@ -47,6 +47,29 @@ export async function GET(
 
     console.log('[API] Transformed menu:', menuData.length, 'categories');
 
+    // Check if restaurant is paid (from Supabase if available)
+    let paid = false;
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (supabaseUrl && supabaseKey) {
+      try {
+        const { createClient } = await import('@supabase/supabase-js');
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        const { data } = await supabase
+          .from('restaurants')
+          .select('paid')
+          .eq('slug', slug)
+          .single();
+        
+        if (data) {
+          paid = data.paid || false;
+        }
+      } catch (err) {
+        console.log('[API] Could not check paid status:', err);
+      }
+    }
+
     // Create restaurant data from menu.json or slug
     const restaurant = {
       id: slug,
@@ -57,6 +80,7 @@ export async function GET(
         .join(' '),
       location: menuFile.location || 'Location not specified',
       created_at: new Date().toISOString(),
+      paid,
     };
 
     console.log('[API] Returning restaurant:', restaurant.name);
