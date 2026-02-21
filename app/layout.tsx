@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'MenuReady — Your Digital Menu Is Already Built',
+  title: 'Menus Ready — Your Digital Menu Is Already Built',
   description: 'We built your restaurant\'s digital menu from your Yelp photos. Preview it free — no credit card required.',
 }
 

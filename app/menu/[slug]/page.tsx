@@ -73,7 +73,7 @@ export default function MenuPage() {
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Menu Not Found</h1>
           <p className="text-slate-600 mb-6">{error}</p>
           <Link href="/" className="text-red-600 hover:text-red-700 font-semibold">
-            Visit MenuReady →
+            Visit Menus Ready →
           </Link>
         </div>
       </div>
@@ -94,7 +94,7 @@ export default function MenuPage() {
               href="/"
               className="text-xs text-slate-500 hover:text-red-600 transition-colors"
             >
-              Powered by MenuReady
+              Powered by Menus Ready
             </Link>
           </div>
         </div>

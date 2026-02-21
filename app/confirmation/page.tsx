@@ -108,7 +108,7 @@ function ConfirmationContent() {
       <header className="bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <Link href="/" className="text-2xl font-bold text-red-600">
-            MenuReady
+            Menus Ready
           </Link>
         </div>
       </header>
@@ -239,7 +239,7 @@ function ConfirmationContent() {
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                   BEST VALUE
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">MenuReady Pro</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Menus Ready Pro</h3>
                 <p className="text-3xl font-bold text-red-600 mb-4">
                   $19 <span className="text-sm text-slate-600 font-normal">/month</span>
                 </p>

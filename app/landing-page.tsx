@@ -58,7 +58,7 @@ export default function LandingPage() {
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-screen-sm md:max-w-7xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
           <h1 className="text-xl md:text-2xl font-bold text-slate-900">
-            Menu<span className="text-red-600">Ready</span>
+            Menus <span className="text-red-600">Ready</span>
           </h1>
           <a
             href="/contact"
@@ -472,7 +472,7 @@ export default function LandingPage() {
             <a href="/how-it-works" className="hover:text-white">How It Works</a>
           </p>
           <p className="text-xs text-slate-500 mt-4">
-            © 2026 MenuReady. Digitizing local restaurants.
+            © 2026 Menus Ready. Digitizing local restaurants.
           </p>
         </div>
       </footer>

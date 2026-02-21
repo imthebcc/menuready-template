@@ -49,7 +49,7 @@ export function OnboardingLayout({
                 <ArrowLeft className="w-5 h-5 text-slate-600" />
               </button>
             )}
-            <h1 className="text-xl font-bold text-slate-900">MenuReady</h1>
+            <h1 className="text-xl font-bold text-slate-900">Menus Ready</h1>
           </div>
           <a
             href="/support"

@@ -63,8 +63,8 @@ export default function ContactPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Web3Forms Access Key - Replace with your actual key */}
             <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
-            <input type="hidden" name="subject" value="New MenuReady Contact Form Submission" />
-            <input type="hidden" name="from_name" value="MenuReady Contact Form" />
+            <input type="hidden" name="subject" value="New Menus Ready Contact Form Submission" />
+            <input type="hidden" name="from_name" value="Menus Ready Contact Form" />
 
             {/* Name */}
             <div>
