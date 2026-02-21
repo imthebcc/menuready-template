@@ -233,26 +233,22 @@ export default function PreviewPage() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Menu Preview with Watermark */}
         <div className="relative">
-          {/* Watermark Overlay - Always visible */}
-          <div 
-            className="absolute inset-0 z-10 pointer-events-none select-none overflow-hidden"
-            style={{ 
-              backgroundImage: `repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 150px,
-                rgba(156, 163, 175, 0.08) 150px,
-                rgba(156, 163, 175, 0.08) 300px
-              )`
-            }}
-          >
-            <div className="absolute inset-0 flex flex-wrap items-center justify-center gap-32 p-8 transform rotate-[-25deg] scale-150">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <span key={i} className="text-gray-400 opacity-10 text-2xl font-bold whitespace-nowrap">
-                  Draft Preview
-                </span>
-              ))}
-            </div>
+          {/* Watermark Overlay - Diagonal repeating text */}
+          <div className="absolute inset-0 z-10 pointer-events-none select-none overflow-hidden">
+            {Array.from({ length: 15 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute whitespace-nowrap text-gray-300 text-sm font-medium opacity-40"
+                style={{
+                  transform: 'rotate(-30deg)',
+                  top: `${i * 60 - 100}px`,
+                  left: '-50px',
+                  letterSpacing: '8px'
+                }}
+              >
+                PREVIEW · MENUS READY · PREVIEW · MENUS READY · PREVIEW · MENUS READY
+              </div>
+            ))}
           </div>
 
           {/* Expired Blur Overlay */}
@@ -273,14 +269,12 @@ export default function PreviewPage() {
                 <div className="space-y-4">
                   {category.items.map((item, itemIdx) => {
                     const price = parseFloat(item.price);
-                    // Blur roughly every 3rd item (~30%)
-                    const shouldBlur = itemIdx % 3 === 1;
                     
                     return (
                       <div key={itemIdx} className="border-b border-slate-100 pb-4 last:border-0">
                         <div className="flex justify-between items-start mb-1">
                           <h3 className="text-lg font-semibold text-slate-900 flex-1">{item.name}</h3>
-                          <span className={`text-lg font-bold text-red-600 ml-4 whitespace-nowrap ${shouldBlur ? 'blur-sm select-none' : ''}`}>
+                          <span className="text-lg font-bold text-red-600 ml-4 whitespace-nowrap">
                             ${price.toFixed(2)}
                           </span>
                         </div>
