@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
+import path from 'path';
+import fs from 'fs';
 import { generateDeliverables } from '@/lib/fileGeneration';
-import { sendCustomerEmail, sendInternalAlert } from '@/lib/email';
+import { sendInternalAlert } from '@/lib/email';
 
 export const dynamic = 'force-dynamic';
 
@@ -78,20 +80,39 @@ export async function POST(request: NextRequest) {
       const { qrCode, textMenu } = await generateDeliverables(slug);
       console.log('[Webhook] ✅ Deliverables generated');
 
-      // 3. Send customer email with files
-      console.log(`[Webhook] Sending customer email to ${customerEmail}...`);
-      const menuData = require(`@/data/restaurants/${slug}/menu.json`);
-      await sendCustomerEmail({
-        customerEmail,
-        restaurantName: menuData.restaurant,
-        slug,
-        qrCode,
-        textMenu,
-      });
-      console.log('[Webhook] ✅ Customer email sent');
+      // 3. Upload files to Supabase Storage
+      if (supabaseUrl && supabaseKey) {
+        console.log(`[Webhook] Uploading files to Supabase Storage...`);
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        
+        try {
+          // Upload QR code
+          await supabase.storage
+            .from('menus')
+            .upload(`${slug}/qr-code.png`, qrCode, {
+              contentType: 'image/png',
+              upsert: true,
+            });
 
-      // 4. Send internal alert to Tim + Remi
+          // Upload text menu
+          await supabase.storage
+            .from('menus')
+            .upload(`${slug}/menu.txt`, Buffer.from(textMenu), {
+              contentType: 'text/plain',
+              upsert: true,
+            });
+
+          console.log('[Webhook] ✅ Files uploaded to storage');
+        } catch (storageError) {
+          console.error('[Webhook] Storage upload error:', storageError);
+        }
+      }
+
+      // 4. Send internal alert to Tim + Remi (no customer email)
       console.log('[Webhook] Sending internal alert...');
+      const menuDataPath = path.join(process.cwd(), 'data', 'restaurants', slug, 'menu.json');
+      const menuData = JSON.parse(fs.readFileSync(menuDataPath, 'utf-8'));
+      
       await sendInternalAlert({
         restaurantName: menuData.restaurant,
         slug,

@@ -33,6 +33,11 @@ export default function PreviewPage() {
   const [error, setError] = useState('');
   const [expired, setExpired] = useState(false);
   const [expiryText, setExpiryText] = useState('');
+  
+  // Supabase storage base URL (client-side accessible)
+  const storageUrl = process.env.NEXT_PUBLIC_SUPABASE_URL 
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/menus/${slug}`
+    : null;
 
   useEffect(() => {
     // Clean up old localStorage key (one-time reset)
@@ -209,19 +214,117 @@ export default function PreviewPage() {
         </div>
       </header>
 
-      {/* Live Banner - Show if paid */}
+      {/* Unlocked Delivery Banner - Show if paid */}
       {restaurant?.paid && (
-        <div className="bg-green-50 border-b border-green-200 px-4 py-6">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-2 mb-2">
+        <div className="bg-green-50 border-b border-green-200 px-4 py-8">
+          <div className="max-w-3xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-4">
               <i className="ri-checkbox-circle-fill text-3xl text-green-600"></i>
-              <h2 className="text-xl md:text-2xl font-bold text-slate-900">
-                Your menu is live!
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                Your menu is live — {restaurant?.name}
               </h2>
             </div>
-            <p className="text-base text-slate-700">
-              Your digital menu for <strong>{restaurant?.name}</strong> is published and ready to share.
-            </p>
+            
+            {/* Download Buttons - 2x2 grid */}
+            <div className="grid grid-cols-2 gap-3 mb-6 max-w-2xl mx-auto">
+              {storageUrl ? (
+                <>
+                  <a
+                    href={`${storageUrl}/menu.pdf`}
+                    download
+                    className="w-full min-h-[52px] bg-white border-2 border-green-600 text-green-700 font-bold py-3 px-4 rounded-lg hover:bg-green-50 transition-all flex items-center justify-center gap-2 no-underline"
+                  >
+                    <i className="ri-file-pdf-line text-xl"></i>
+                    <span>Download PDF</span>
+                  </a>
+                  
+                  <a
+                    href={`${storageUrl}/qr-code.png`}
+                    download
+                    className="w-full min-h-[52px] bg-white border-2 border-green-600 text-green-700 font-bold py-3 px-4 rounded-lg hover:bg-green-50 transition-all flex items-center justify-center gap-2 no-underline"
+                  >
+                    <i className="ri-qr-code-line text-xl"></i>
+                    <span>Download QR Code</span>
+                  </a>
+                  
+                  <a
+                    href={`${storageUrl}/menu.jpg`}
+                    download
+                    className="w-full min-h-[52px] bg-white border-2 border-green-600 text-green-700 font-bold py-3 px-4 rounded-lg hover:bg-green-50 transition-all flex items-center justify-center gap-2 no-underline"
+                  >
+                    <i className="ri-image-line text-xl"></i>
+                    <span>Download Image</span>
+                  </a>
+                  
+                  <a
+                    href={`${storageUrl}/menu.txt`}
+                    download
+                    className="w-full min-h-[52px] bg-white border-2 border-green-600 text-green-700 font-bold py-3 px-4 rounded-lg hover:bg-green-50 transition-all flex items-center justify-center gap-2 no-underline"
+                  >
+                    <i className="ri-file-text-line text-xl"></i>
+                    <span>Download Text File</span>
+                  </a>
+                </>
+              ) : (
+                <div className="col-span-2 text-center text-slate-600">
+                  <p>Download links will appear here after setup.</p>
+                </div>
+              )}
+            </div>
+
+            {/* Menu Link */}
+            <div className="bg-white rounded-lg border-2 border-green-200 p-4 mb-4">
+              <p className="text-sm text-slate-600 mb-2">Your live menu link:</p>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={`https://menusready.com/menu/${slug}`}
+                  readOnly
+                  className="flex-1 px-4 py-2 border border-slate-300 rounded-lg bg-slate-50 text-slate-900 font-mono text-sm"
+                />
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(`https://menusready.com/menu/${slug}`);
+                    alert('Link copied!');
+                  }}
+                  className="px-6 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-all whitespace-nowrap"
+                >
+                  Copy Link
+                </button>
+              </div>
+            </div>
+
+            {/* Share Row */}
+            <div className="text-center">
+              <p className="text-sm text-slate-600 mb-3">Share your menu →</p>
+              <div className="flex justify-center gap-3 flex-wrap">
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(`https://menusready.com/menu/${slug}`);
+                    alert('Link copied!');
+                  }}
+                  className="px-4 py-2 bg-slate-600 text-white font-medium rounded-lg hover:bg-slate-700 transition-all text-sm"
+                >
+                  <i className="ri-link mr-1"></i> Copy Link
+                </button>
+                <a
+                  href={`https://www.instagram.com/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition-all text-sm"
+                >
+                  <i className="ri-instagram-line mr-1"></i> Instagram
+                </a>
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://menusready.com/menu/${slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all text-sm"
+                >
+                  <i className="ri-facebook-fill mr-1"></i> Facebook
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}
