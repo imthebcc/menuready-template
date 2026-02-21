@@ -172,50 +172,42 @@ export default function LandingPage() {
                 ))}
               </div>
 
-              {/* Mobile Scroll - Show only first 3 photos */}
-              <div className="md:hidden flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory -mx-2 px-2">
+              {/* Mobile Stack - Single column, all 3 photos */}
+              <div className="md:hidden flex flex-col gap-3">
                 {mockYelpImages.slice(0, 3).map((img) => (
                   <div
                     key={img.id}
-                    style={{ 
-                      transform: `rotate(${img.rotation}deg)`,
-                    }}
-                    className="flex-shrink-0 w-[70vw] max-w-[280px] min-h-[200px] rounded-lg border-2 border-red-300 overflow-hidden snap-center relative shadow-md"
+                    className="relative w-full h-[220px] rounded-lg border-2 border-red-300 overflow-hidden shadow-md"
                   >
                     <img
                       src={img.imageUrl}
                       alt={`Menu photo from ${img.reviewer}`}
-                      className="w-full h-full min-h-[200px] object-cover opacity-90 saturate-75 contrast-75"
+                      className="w-full h-full object-cover opacity-90 saturate-75 contrast-75"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 backdrop-blur-sm p-3">
-                      <p className="text-white text-sm font-semibold">
-                        Photo from review
-                      </p>
-                      <p className="text-white/80 text-xs">
-                        {img.reviewer} · {img.date}
-                      </p>
+                    <div className="absolute bottom-0 left-0 p-2 bg-black/50 text-white text-xs">
+                      Photo from review · {img.reviewer} · {img.date}
                     </div>
                   </div>
                 ))}
               </div>
               
-              {/* Problem Statement */}
-              <div className="mt-4 grid grid-cols-2 gap-2 md:space-y-1 md:grid-cols-1 text-sm md:text-base text-slate-700">
+              {/* Problem Statement - Single column on mobile */}
+              <div className="mt-4 flex flex-col gap-2 text-base text-slate-700">
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="text-red-500 text-lg">✕</span>
                   <span className="font-medium">Hard to read</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="text-red-500 text-lg">✕</span>
                   <span className="font-medium">Out of order</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="text-red-500 text-lg">✕</span>
                   <span className="font-medium">Different angles</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-lg">❌</span>
+                  <span className="text-red-500 text-lg">✕</span>
                   <span className="font-medium">Missing sections</span>
                 </div>
               </div>
