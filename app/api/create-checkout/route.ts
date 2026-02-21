@@ -22,23 +22,15 @@ export async function POST(request: NextRequest) {
     // Get Stripe instance (lazy initialization)
     const stripe = getStripe();
 
-    // Create $99 one-time checkout session
+    // Create checkout session using Stripe Price ID
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      mode: 'payment',
       line_items: [
         {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'MenuReady — Done For You',
-              description: 'Priority listing + Yelp submission',
-            },
-            unit_amount: 9900, // $99.00 in cents
-          },
+          price: process.env.STRIPE_PRICE_ONETIME,
           quantity: 1,
         },
       ],
+      mode: 'payment',
       success_url: `${appUrl}/confirmation?session_id={CHECKOUT_SESSION_ID}&slug=${slug}`,
       cancel_url: `${appUrl}/preview/${slug}`,
       metadata: {
