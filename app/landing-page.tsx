@@ -104,38 +104,49 @@ export default function LandingPage() {
           </p>
         </FadeUp>
 
-        {/* Pain point cards - stacked on mobile, grid on desktop */}
-        <div className="flex flex-col md:grid md:grid-cols-3 gap-4 mb-8 md:mb-10 max-w-3xl mx-auto">
-          <FadeUp delay={0.15}>
-            <div className="bg-white shadow-sm rounded-xl px-4 py-5 flex items-start gap-3">
-              <div className="text-2xl flex-shrink-0 text-red-600">😤</div>
+        {/* Pain point cards - consolidated into one clean panel */}
+        <FadeUp delay={0.15}>
+          <div className="bg-white shadow-sm rounded-xl max-w-2xl mx-auto mb-8 md:mb-10 overflow-hidden">
+            {/* Row 1 */}
+            <div className="flex items-center gap-3 px-4 py-3">
+              <div className="w-9 h-9 bg-red-50 rounded-[10px] flex items-center justify-center flex-shrink-0">
+                <span className="text-lg">😤</span>
+              </div>
               <div className="text-left">
-                <p className="font-bold text-slate-900 mb-1">"I can't find their menu"</p>
-                <p className="text-sm text-slate-600">The #1 reason customers don't show up</p>
+                <p className="font-semibold text-slate-900 mb-0.5" style={{fontFamily: "'Sora', sans-serif", fontSize: '13px'}}>"I can't find their menu"</p>
+                <p className="text-slate-600" style={{fontSize: '12px'}}>The #1 reason customers don't show up</p>
               </div>
             </div>
-          </FadeUp>
 
-          <FadeUp delay={0.18}>
-            <div className="bg-white shadow-sm rounded-xl px-4 py-5 flex items-start gap-3">
-              <div className="text-2xl flex-shrink-0 text-red-600">📸</div>
-              <div className="text-left">
-                <p className="font-bold text-slate-900 mb-1">Blurry Yelp photos aren't a menu</p>
-                <p className="text-sm text-slate-600">Customers give up and go somewhere else</p>
-              </div>
-            </div>
-          </FadeUp>
+            {/* Divider */}
+            <div className="border-t border-slate-200"></div>
 
-          <FadeUp delay={0.21}>
-            <div className="bg-white shadow-sm rounded-xl px-4 py-5 flex items-start gap-3">
-              <div className="text-2xl flex-shrink-0 text-red-600">⭐</div>
+            {/* Row 2 */}
+            <div className="flex items-center gap-3 px-4 py-3">
+              <div className="w-9 h-9 bg-red-50 rounded-[10px] flex items-center justify-center flex-shrink-0">
+                <span className="text-lg">📸</span>
+              </div>
               <div className="text-left">
-                <p className="font-bold text-slate-900 mb-1">Better menu = better reviews</p>
-                <p className="text-sm text-slate-600">Customers know what to expect before they arrive</p>
+                <p className="font-semibold text-slate-900 mb-0.5" style={{fontFamily: "'Sora', sans-serif", fontSize: '13px'}}>Blurry Yelp photos aren't a menu</p>
+                <p className="text-slate-600" style={{fontSize: '12px'}}>Customers give up and go somewhere else</p>
               </div>
             </div>
-          </FadeUp>
-        </div>
+
+            {/* Divider */}
+            <div className="border-t border-slate-200"></div>
+
+            {/* Row 3 */}
+            <div className="flex items-center gap-3 px-4 py-3">
+              <div className="w-9 h-9 bg-red-50 rounded-[10px] flex items-center justify-center flex-shrink-0">
+                <span className="text-lg">⭐</span>
+              </div>
+              <div className="text-left">
+                <p className="font-semibold text-slate-900 mb-0.5" style={{fontFamily: "'Sora', sans-serif", fontSize: '13px'}}>Better menu = better reviews</p>
+                <p className="text-slate-600" style={{fontSize: '12px'}}>Customers know what to expect before they arrive</p>
+              </div>
+            </div>
+          </div>
+        </FadeUp>
 
         <FadeUp delay={0.24}>
           {/* CTA - big, full width, red */}
