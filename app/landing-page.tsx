@@ -77,7 +77,7 @@ export default function LandingPage() {
             <span className="hidden sm:inline text-slate-300">|</span>
             <span className="font-semibold">100% satisfaction</span>
             <span className="hidden sm:inline text-slate-300">|</span>
-            <span className="font-semibold">24hr delivery</span>
+            <span className="font-semibold">Same week delivery</span>
           </div>
         </div>
       </div>
@@ -615,7 +615,7 @@ export default function LandingPage() {
                 How long does it take?
               </h4>
               <p className="text-slate-700 ml-7">
-                Preview is <strong>instant</strong>. Once you pay, you get download links immediately. Yelp/Google submission takes 24-48 hours.
+                Preview is <strong>instant</strong>. Once you pay, you get download links immediately. Yelp/Google submission happens within the same week.
               </p>
             </div>
 
