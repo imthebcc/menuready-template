@@ -54,15 +54,19 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-red-50">
-      {/* Header - Compact on mobile */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-screen-sm md:max-w-7xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
-          <h1 className="text-xl md:text-2xl font-bold text-slate-900">
-            Menus <span className="text-red-600">Ready</span>
+      {/* Header - Mobile-first, restaurant-industry credibility */}
+      <header 
+        className="bg-white sticky top-0 z-50 h-14 md:h-16"
+        style={{ boxShadow: '0 1px 12px rgba(0, 0, 0, 0.08)' }}
+      >
+        <div className="h-full px-4 flex items-center justify-between">
+          <h1 className="text-xl md:text-2xl">
+            <span className="font-bold text-gray-900" style={{fontFamily: "'Playfair Display', serif"}}>Menus</span>
+            <span className="font-bold text-red-600" style={{fontFamily: "'Playfair Display', serif"}}> Ready</span>
           </h1>
           <a
-            href="/contact"
-            className="text-xs md:text-sm text-slate-600 hover:text-slate-900 font-medium"
+            href="mailto:support@menusready.com"
+            className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
           >
             Need help?
           </a>
