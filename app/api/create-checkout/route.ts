@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
         },
       ],
       mode: 'payment',
-      success_url: `${appUrl}/success?restaurant=${slug}`,
+      success_url: `${appUrl}/success?restaurant=${slug}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/preview/${slug}`,
       metadata: {
         slug: slug,

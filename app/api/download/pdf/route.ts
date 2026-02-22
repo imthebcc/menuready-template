@@ -69,14 +69,24 @@ export async function GET(request: NextRequest) {
     .item {
       margin-bottom: 12px;
       page-break-inside: avoid;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .item-content {
+      flex: 1;
+      padding-right: 20px;
     }
     .item-name {
       font-weight: bold;
       font-size: 14px;
+      margin-bottom: 2px;
     }
     .item-price {
       color: #E8281E;
       font-weight: bold;
+      font-size: 14px;
+      white-space: nowrap;
     }
     .item-description {
       font-size: 12px;
@@ -102,11 +112,11 @@ export async function GET(request: NextRequest) {
       <div class="category-name">${category.name}</div>
       ${category.items.map((item: any) => `
         <div class="item">
-          <div>
-            <span class="item-name">${item.name}</span>
-            ${item.price ? `<span class="item-price"> - $${item.price}</span>` : ''}
+          <div class="item-content">
+            <div class="item-name">${item.name}</div>
+            ${item.description ? `<div class="item-description">${item.description}</div>` : ''}
           </div>
-          ${item.description ? `<div class="item-description">${item.description}</div>` : ''}
+          ${item.price ? `<div class="item-price">$${item.price}</div>` : ''}
         </div>
       `).join('')}
     </div>

@@ -108,7 +108,7 @@ export default function MenuPage() {
                         {item.name}
                       </h3>
                       <span className="text-[15px] font-bold text-[#E8281E] whitespace-nowrap" style={{fontFamily: "'Sora', sans-serif"}}>
-                        {item.price}
+                        ${item.price}
                       </span>
                     </div>
                     {item.description && (

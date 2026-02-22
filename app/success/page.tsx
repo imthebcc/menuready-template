@@ -7,7 +7,11 @@ import Link from 'next/link';
 function SuccessContent() {
   const searchParams = useSearchParams();
   const restaurant = searchParams.get('restaurant');
+  const sessionId = searchParams.get('session_id');
   const [copied, setCopied] = useState(false);
+  const [verified, setVerified] = useState(false);
+  const [verifying, setVerifying] = useState(true);
+  const [error, setError] = useState('');
 
   const menuUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://menusready.com'}/menu/${restaurant}`;
 
@@ -17,13 +21,59 @@ function SuccessContent() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  if (!restaurant) {
+  useEffect(() => {
+    verifySession();
+  }, [sessionId]);
+
+  async function verifySession() {
+    if (!sessionId) {
+      setError('Access denied. Missing payment verification.');
+      setVerifying(false);
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/verify-session?session_id=${sessionId}`);
+      const data = await res.json();
+
+      if (data.valid) {
+        setVerified(true);
+      } else {
+        setError('Access denied. Invalid or expired session.');
+      }
+    } catch (err) {
+      setError('Access denied. Could not verify payment.');
+    } finally {
+      setVerifying(false);
+    }
+  }
+
+  if (verifying) {
     return (
       <div className="min-h-screen bg-[#F5F4F1] flex items-center justify-center px-4">
         <div className="text-center">
-          <p className="text-[#6B7280]">Missing restaurant information</p>
-          <Link href="/" className="text-[#E8281E] underline mt-2 inline-block">
-            Go home
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#E8281E] mx-auto mb-4"></div>
+          <p className="text-[#6B7280]">Verifying payment...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !verified || !restaurant) {
+    return (
+      <div className="min-h-screen bg-[#F5F4F1] flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-3xl">🔒</span>
+          </div>
+          <h1 className="text-2xl font-bold text-[#111111] mb-2" style={{fontFamily: "'Sora', sans-serif"}}>
+            Access Denied
+          </h1>
+          <p className="text-[#6B7280] mb-6">
+            {error || 'This page is only accessible after completing a purchase.'}
+          </p>
+          <Link href="/" className="text-[#E8281E] underline font-semibold">
+            Go to homepage
           </Link>
         </div>
       </div>
