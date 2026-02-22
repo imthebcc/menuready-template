@@ -20,9 +20,11 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    const name = formData['Name'] || formData['name'] || 'Not provided';
-    const restaurant = formData['Restaurant'] || formData['restaurant'] || 'Not provided';
-    const message = formData['Message'] || formData['message'] || formData['How can we help?'] || 'Not provided';
+    console.log('[Tally Webhook] Parsed form data:', formData);
+
+    const name = formData['Your Name'] || formData['Name'] || formData['name'] || 'Not provided';
+    const restaurant = formData['Restaurant Name'] || formData['Restaurant'] || formData['restaurant'] || 'Not provided';
+    const message = formData['What do you need help with?'] || formData['Message'] || formData['message'] || 'Not provided';
     const timestamp = new Date().toLocaleString('en-US', { 
       timeZone: 'America/Los_Angeles',
       dateStyle: 'medium',
