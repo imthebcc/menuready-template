@@ -53,24 +53,19 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-red-50">
-      {/* Header - Mobile-first, restaurant-industry credibility */}
-      <header 
-        className="bg-white sticky top-0 z-50 h-14 md:h-16"
-        style={{ boxShadow: '0 1px 12px rgba(0, 0, 0, 0.08)' }}
-      >
-        <div className="h-full px-4 flex items-center justify-between">
-          <h1 className="text-xl md:text-2xl">
-            <span className="font-bold text-gray-900" style={{fontFamily: "'Playfair Display', serif"}}>Menus</span>
-            <span className="font-bold text-red-600" style={{fontFamily: "'Playfair Display', serif"}}> Ready</span>
-          </h1>
-          <a
-            href="mailto:support@menusready.com"
-            className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
-          >
-            Need help?
-          </a>
+    <div className="min-h-screen bg-[#F5F4F1] max-w-[430px] mx-auto overflow-x-hidden">
+      {/* Header - Mobile-first redesign */}
+      <header className="bg-[#F5F4F1] sticky top-0 z-50 px-6 py-5 flex items-center justify-between border-b border-[#E8E6E1]">
+        <div className="text-lg font-bold tracking-[-0.3px]" style={{fontFamily: "'Sora', sans-serif"}}>
+          <span className="text-[#111111]">Menus</span>
+          <span className="text-[#E8281E]"> Ready</span>
         </div>
+        <a
+          href="mailto:support@menusready.com"
+          className="text-[13px] font-medium text-[#6B7280] bg-transparent border border-[#E8E6E1] rounded-full px-3.5 py-1.5 hover:bg-white transition-colors"
+        >
+          Need help?
+        </a>
       </header>
 
       {/* Social Proof Trust Bar - CHANGE 4: Enhanced social proof */}
@@ -86,84 +81,104 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Hero - Owner-focused, pain points, conversion CTA */}
-      <section className="max-w-screen-sm md:max-w-4xl mx-auto px-4 py-8 md:py-16">
+      {/* Hero - Mobile-first redesign */}
+      <section className="px-6 pt-12 pb-9 text-center">
         <FadeUp delay={0.05}>
-          {/* Headline - their problem, your solution */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4 md:mb-5 leading-tight text-center">
-            Customers can't find your menu online.
-            <br />
-            We fix that today.
-          </h2>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-1.5 bg-[#FFF3F2] border border-[#FFCAC8] rounded-full px-3 py-1.5 mb-5">
+            <span className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse"></span>
+            <span className="text-[11px] font-semibold text-red-600 tracking-wider uppercase">Fix it today</span>
+          </div>
         </FadeUp>
         
         <FadeUp delay={0.10}>
-          {/* Subtext - what it does in plain English */}
-          <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed text-center">
-            We turn your Yelp photos into a clean, shareable digital menu with a QR code — no website, no tech skills, no setup.
+          {/* Headline */}
+          <h1 className="text-[34px] font-extrabold leading-[1.15] tracking-[-1px] text-[#111111] mb-4" style={{fontFamily: "'Sora', sans-serif"}}>
+            Customers can't find your menu.
+            <br />
+            <em className="not-italic text-red-600">We fix that.</em>
+          </h1>
+        </FadeUp>
+        
+        <FadeUp delay={0.12}>
+          {/* Subtext */}
+          <p className="text-[15px] leading-relaxed text-[#6B7280] max-w-[300px] mx-auto mb-3">
+            We turn your Yelp photos into a clean digital menu with a QR code — no website, no tech skills needed.
           </p>
         </FadeUp>
+      </section>
 
-        {/* Pain point cards - consolidated into one clean panel */}
+      {/* Section Label */}
+      <div className="text-[11px] font-semibold tracking-[1.5px] uppercase text-[#6B7280] px-6 mb-3">
+        Why it matters
+      </div>
+
+      {/* Pain point cards - consolidated panel */}
+      <div className="px-4 mb-8">
         <FadeUp delay={0.15}>
-          <div className="bg-white shadow-sm rounded-xl max-w-2xl mx-auto mb-8 md:mb-10 overflow-hidden">
+          <div className="bg-white rounded-2xl border border-[#E8E6E1] overflow-hidden">
             {/* Row 1 */}
-            <div className="flex items-center gap-3 px-4 py-3">
-              <div className="w-9 h-9 bg-red-50 rounded-[10px] flex items-center justify-center flex-shrink-0">
-                <span className="text-lg">😤</span>
+            <div className="flex items-center gap-3 px-4 py-3.5">
+              <div className="w-9 h-9 bg-[#F5F4F1] rounded-[10px] flex items-center justify-center flex-shrink-0 text-xl">
+                😤
               </div>
               <div className="text-left">
-                <p className="font-semibold text-slate-900 mb-0.5" style={{fontFamily: "'Sora', sans-serif", fontSize: '13px'}}>"I can't find their menu"</p>
-                <p className="text-slate-600" style={{fontSize: '12px'}}>The #1 reason customers don't show up</p>
+                <h3 className="text-[13px] font-bold text-[#111111] mb-0.5 tracking-[-0.1px]" style={{fontFamily: "'Sora', sans-serif"}}>"I can't find their menu"</h3>
+                <p className="text-[12px] text-[#6B7280] leading-snug">The #1 reason customers don't show up</p>
               </div>
             </div>
 
             {/* Divider */}
-            <div className="border-t border-slate-200"></div>
+            <div className="border-t border-[#E8E6E1]"></div>
 
             {/* Row 2 */}
-            <div className="flex items-center gap-3 px-4 py-3">
-              <div className="w-9 h-9 bg-red-50 rounded-[10px] flex items-center justify-center flex-shrink-0">
-                <span className="text-lg">📸</span>
+            <div className="flex items-center gap-3 px-4 py-3.5">
+              <div className="w-9 h-9 bg-[#F5F4F1] rounded-[10px] flex items-center justify-center flex-shrink-0 text-xl">
+                📷
               </div>
               <div className="text-left">
-                <p className="font-semibold text-slate-900 mb-0.5" style={{fontFamily: "'Sora', sans-serif", fontSize: '13px'}}>Blurry Yelp photos aren't a menu</p>
-                <p className="text-slate-600" style={{fontSize: '12px'}}>Customers give up and go somewhere else</p>
+                <h3 className="text-[13px] font-bold text-[#111111] mb-0.5 tracking-[-0.1px]" style={{fontFamily: "'Sora', sans-serif"}}>Blurry Yelp photos aren't a menu</h3>
+                <p className="text-[12px] text-[#6B7280] leading-snug">Customers give up and go somewhere else</p>
               </div>
             </div>
 
             {/* Divider */}
-            <div className="border-t border-slate-200"></div>
+            <div className="border-t border-[#E8E6E1]"></div>
 
             {/* Row 3 */}
-            <div className="flex items-center gap-3 px-4 py-3">
-              <div className="w-9 h-9 bg-red-50 rounded-[10px] flex items-center justify-center flex-shrink-0">
-                <span className="text-lg">⭐</span>
+            <div className="flex items-center gap-3 px-4 py-3.5">
+              <div className="w-9 h-9 bg-[#F5F4F1] rounded-[10px] flex items-center justify-center flex-shrink-0 text-xl">
+                ⭐
               </div>
               <div className="text-left">
-                <p className="font-semibold text-slate-900 mb-0.5" style={{fontFamily: "'Sora', sans-serif", fontSize: '13px'}}>Better menu = better reviews</p>
-                <p className="text-slate-600" style={{fontSize: '12px'}}>Customers know what to expect before they arrive</p>
+                <h3 className="text-[13px] font-bold text-[#111111] mb-0.5 tracking-[-0.1px]" style={{fontFamily: "'Sora', sans-serif"}}>Better menu = better reviews</h3>
+                <p className="text-[12px] text-[#6B7280] leading-snug">Customers know what to expect before they arrive</p>
               </div>
             </div>
           </div>
         </FadeUp>
+      </div>
 
-        <FadeUp delay={0.24}>
-          {/* CTA - big, full width, red */}
-          <div className="flex flex-col items-center gap-3 max-w-lg mx-auto">
-            <Link
-              href="/preview/harbor-diner-huntington-beach"
-              className="w-full flex items-center justify-center px-8 py-5 bg-red-600 text-white text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
-            >
-              See What We Built For You →
-            </Link>
-            <p className="text-sm text-slate-500 text-center">
-              No setup. No tech skills. Ready today.
-            </p>
-          </div>
+      {/* CTA Section */}
+      <div className="px-4 pt-8 pb-12">
+        <FadeUp delay={0.20}>
+          <Link
+            href="/preview/harbor-diner-huntington-beach"
+            className="w-full flex items-center justify-center gap-2 bg-[#E8281E] text-white text-base font-bold rounded-2xl px-6 py-[18px] hover:bg-[#c41f16] transition-all active:scale-[0.98]"
+            style={{
+              fontFamily: "'Sora', sans-serif",
+              letterSpacing: '-0.2px',
+              boxShadow: '0 4px 20px rgba(232,40,30,0.35)'
+            }}
+          >
+            See What We Built For You
+            <span className="text-lg transition-transform hover:translate-x-1">→</span>
+          </Link>
+          <p className="text-[12px] text-[#6B7280] text-center mt-3.5 tracking-[0.2px]">
+            No setup &nbsp;·&nbsp; No tech skills &nbsp;·&nbsp; Ready today
+          </p>
         </FadeUp>
-
-      </section>
+      </div>
 
       {/* Yelp Visual Proof Section - Before vs After */}
       <section className="bg-white py-8 md:py-16 border-y-2 border-red-100">
