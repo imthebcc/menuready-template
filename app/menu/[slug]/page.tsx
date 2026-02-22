@@ -57,10 +57,10 @@ export default function MenuPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#F5F4F1]">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
-          <p className="mt-4 text-slate-600">Loading menu...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#E8281E] mx-auto"></div>
+          <p className="mt-4 text-[#6B7280]">Loading menu...</p>
         </div>
       </div>
     );
@@ -68,11 +68,11 @@ export default function MenuPage() {
 
   if (error || !restaurant) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#F5F4F1] px-6">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Menu Not Found</h1>
-          <p className="text-slate-600 mb-6">{error}</p>
-          <Link href="/" className="text-red-600 hover:text-red-700 font-semibold">
+          <h1 className="text-2xl font-bold text-[#111111] mb-4" style={{fontFamily: "'Sora', sans-serif"}}>Menu Not Found</h1>
+          <p className="text-[#6B7280] mb-6">{error}</p>
+          <Link href="/" className="text-[#E8281E] hover:text-[#c41f16] font-semibold">
             Visit Menus Ready →
           </Link>
         </div>
@@ -81,67 +81,57 @@ export default function MenuPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#F5F4F1] max-w-[430px] mx-auto">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-slate-900">{restaurant.name}</h1>
-              <p className="text-sm text-slate-600">{restaurant.location}</p>
-            </div>
-            <Link
-              href="/"
-              className="text-xs text-slate-500 hover:text-red-600 transition-colors"
-            >
-              Powered by Menus Ready
-            </Link>
-          </div>
+      <header className="bg-white border-b border-[#E8E6E1] sticky top-0 z-10 px-6 py-5">
+        <div>
+          <h1 className="text-xl font-bold text-[#111111] mb-1" style={{fontFamily: "'Sora', sans-serif"}}>
+            {restaurant.name}
+          </h1>
+          <p className="text-[13px] text-[#6B7280]">{restaurant.location}</p>
         </div>
       </header>
 
       {/* Menu Content */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 md:p-8">
+      <div className="px-4 py-6">
+        <div className="bg-white rounded-2xl border border-[#E8E6E1] p-5">
           {menu && menu.length > 0 ? menu.map((category, idx) => (
-            <div key={idx} className="mb-10 last:mb-0">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide border-b-2 border-red-600 pb-2">
+            <div key={idx} className="mb-8 last:mb-0">
+              <h2 className="text-base font-bold text-[#111111] mb-4 uppercase tracking-wide border-b border-[#E8281E] pb-2" style={{fontFamily: "'Sora', sans-serif"}}>
                 {category.category}
               </h2>
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {category.items.map((item, itemIdx) => (
-                  <div key={itemIdx} className="border-b border-slate-100 pb-5 last:border-0 last:pb-0">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-semibold text-slate-900 flex-1 pr-4">
+                  <div key={itemIdx} className="border-b border-[#E8E6E1] pb-4 last:border-0 last:pb-0">
+                    <div className="flex justify-between items-start gap-3 mb-1">
+                      <h3 className="text-[15px] font-semibold text-[#111111] flex-1" style={{fontFamily: "'Sora', sans-serif"}}>
                         {item.name}
                       </h3>
-                      <span className="text-xl font-bold text-red-600 whitespace-nowrap">
+                      <span className="text-[15px] font-bold text-[#E8281E] whitespace-nowrap" style={{fontFamily: "'Sora', sans-serif"}}>
                         {item.price}
                       </span>
                     </div>
                     {item.description && (
-                      <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                      <p className="text-[13px] text-[#6B7280] leading-relaxed">{item.description}</p>
                     )}
                   </div>
                 ))}
               </div>
             </div>
           )) : (
-            <div className="text-center py-8 text-slate-500">
+            <div className="text-center py-8 text-[#6B7280]">
               <p>No menu items available.</p>
             </div>
           )}
         </div>
 
-        {/* Footer CTA */}
-        <div className="text-center mt-8 p-6 bg-gradient-to-br from-red-50 to-orange-50 rounded-lg border border-red-200">
-          <p className="text-slate-700 mb-3">Want a menu like this for your restaurant?</p>
+        {/* Powered by Footer */}
+        <div className="text-center mt-6 py-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-all"
+            className="text-[12px] text-[#6B7280] hover:text-[#E8281E] transition-colors"
           >
-            Get Your Free Menu
-            <i className="ri-arrow-right-line"></i>
+            Powered by <span className="font-semibold" style={{fontFamily: "'Sora', sans-serif"}}>Menus Ready</span>
           </Link>
         </div>
       </div>
