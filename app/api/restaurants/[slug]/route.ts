@@ -33,33 +33,7 @@ export async function GET(
       );
     }
 
-    // Use stored menu_data if available (edited version), otherwise use file
-    let menuData;
-    if (storedMenuData && storedMenuData.categories) {
-      // Use edited version from Supabase
-      menuData = storedMenuData.categories.map((cat: any) => ({
-        category: cat.name,
-        items: cat.items.map((item: any) => ({
-          name: item.name,
-          price: item.price,
-          description: item.description || undefined,
-        })),
-      }));
-    } else {
-      // Use original file version
-      menuData = menuFile.categories?.map((cat: any) => ({
-        category: cat.name,
-        items: cat.items.map((item: any) => ({
-          name: item.name,
-          price: item.price, // Keep as numeric string, frontend adds $
-          description: item.description || undefined,
-        })),
-      })) || [];
-    }
-
-    console.log('[API] Transformed menu:', menuData.length, 'categories');
-
-    // Check if restaurant is paid and get menu_data from Supabase
+    // Check if restaurant is paid and get menu_data from Supabase FIRST
     let paid = false;
     let paidAt = null;
     let storedMenuData = null;
@@ -85,6 +59,32 @@ export async function GET(
         console.log('[API] Could not check paid status:', err);
       }
     }
+
+    // Use stored menu_data if available (edited version), otherwise use file
+    let menuData;
+    if (storedMenuData && storedMenuData.categories) {
+      // Use edited version from Supabase
+      menuData = storedMenuData.categories.map((cat: any) => ({
+        category: cat.name,
+        items: cat.items.map((item: any) => ({
+          name: item.name,
+          price: item.price,
+          description: item.description || undefined,
+        })),
+      }));
+    } else {
+      // Use original file version
+      menuData = menuFile.categories?.map((cat: any) => ({
+        category: cat.name,
+        items: cat.items.map((item: any) => ({
+          name: item.name,
+          price: item.price, // Keep as numeric string, frontend adds $
+          description: item.description || undefined,
+        })),
+      })) || [];
+    }
+
+    console.log('[API] Transformed menu:', menuData.length, 'categories');
 
     // Create restaurant data from menu.json or slug
     const restaurant = {

@@ -69,17 +69,15 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Social Proof Trust Bar - Hidden on mobile */}
+      {/* Social Proof Trust Bar - CHANGE 4: Enhanced social proof */}
       <div className="hidden md:block bg-gradient-to-r from-slate-100 via-red-50 to-slate-100 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 py-2.5">
           <div className="flex items-center justify-center gap-8 text-xs md:text-sm flex-wrap text-slate-600">
-            <span className="font-semibold">847 menus digitized this month</span>
+            <span className="font-semibold">Built by restaurant owners, for restaurant owners</span>
             <span className="hidden sm:inline text-slate-300">|</span>
-            <span className="font-semibold">91% publish after review</span>
+            <span className="font-semibold">100% satisfaction</span>
             <span className="hidden sm:inline text-slate-300">|</span>
-            <span className="font-semibold">No upfront credit card required</span>
-            <span className="hidden sm:inline text-slate-300">|</span>
-            <span className="font-semibold">Built from your Yelp photos</span>
+            <span className="font-semibold">24hr delivery</span>
           </div>
         </div>
       </div>
@@ -94,15 +92,19 @@ export default function LandingPage() {
         </FadeUp>
         
         <FadeUp delay={0.10}>
+          {/* CHANGE 1: New headline - using Headline A (fear of loss trigger) */}
+          {/* Alternative headlines to A/B test:
+              Headline B: "398 Yelp Photos, Zero Menu Page — We Fixed That"
+              Headline C: "Your Customers Can't Find Your Menu Online" */}
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-            We already built your<br />
-            <span className="text-red-600">digital menu</span>
+            Stop Losing Customers to<br />
+            Your <span className="text-red-600">Invisible Menu</span>
           </h2>
         </FadeUp>
         
         <FadeUp delay={0.18}>
           <p className="text-lg sm:text-xl md:text-2xl text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your menu is already built. Just review it and make it live — free.
+            Your menu is already built from Yelp. Just claim it.
           </p>
         </FadeUp>
 
@@ -301,15 +303,72 @@ export default function LandingPage() {
         </RevealOnScroll>
       </section>
 
-      {/* Revenue Impact Section */}
+      {/* Revenue Impact Section - CHANGE 5: Emotional triggers + PAS framework */}
       <section className="py-8 md:py-16 bg-slate-50">
         <RevealOnScroll>
           <div className="max-w-screen-sm md:max-w-6xl mx-auto px-4">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3">
-              Digital menus increase revenue
+              Why This Matters
             </h3>
             <p className="text-center text-slate-600 mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg">
-              Restaurants with structured menus typically see measurable increases in order value and customer satisfaction.
+              Every day without a digital menu, you're losing customers and revenue.
+            </p>
+
+            {/* Problem-Agitate (Before Digital Menu) */}
+            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-8 max-w-3xl mx-auto">
+              <h4 className="text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
+                <span className="text-2xl">❌</span>
+                Without a Digital Menu:
+              </h4>
+              <div className="space-y-3 text-base text-slate-700">
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 text-lg mt-0.5">✕</span>
+                  <span><strong>Customers Google "[your restaurant] menu" → find competitors</strong></span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 text-lg mt-0.5">✕</span>
+                  <span><strong>You lose orders to restaurants with visible menus</strong></span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 text-lg mt-0.5">✕</span>
+                  <span><strong>Yelp photos are scattered, hard to read, outdated</strong></span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-red-500 text-lg mt-0.5">✕</span>
+                  <span><strong>Customers call asking "what's on the menu?" wasting your time</strong></span>
+                </div>
+              </div>
+            </div>
+
+            {/* Solution (With Menus Ready) */}
+            <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6 mb-8 max-w-3xl mx-auto">
+              <h4 className="text-xl font-bold text-green-900 mb-4 flex items-center gap-2">
+                <span className="text-2xl">✅</span>
+                With Menus Ready:
+              </h4>
+              <div className="space-y-3 text-base text-slate-700">
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-xl text-green-600 mt-0.5"></i>
+                  <span><strong>Show up in Google search results instantly</strong> — customers find you before competitors</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-xl text-green-600 mt-0.5"></i>
+                  <span><strong>Customers know what you offer before they visit</strong> — more confident walk-ins</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-xl text-green-600 mt-0.5"></i>
+                  <span><strong>Professional menu = professional restaurant</strong> — first impression matters</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-xl text-green-600 mt-0.5"></i>
+                  <span><strong>23% higher average order value</strong> — customers see full menu, order more</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Benefits Grid */}
+            <p className="text-center text-slate-600 mb-6 max-w-2xl mx-auto text-base sm:text-lg font-semibold">
+              Plus These Proven Benefits:
             </p>
 
             <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12 max-w-xl md:max-w-none mx-auto">
@@ -389,25 +448,25 @@ export default function LandingPage() {
         </RevealOnScroll>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works - CHANGE 2: Pricing transparency added */}
       <section className="bg-white py-8 md:py-16 border-t-2 border-red-100">
         <RevealOnScroll>
           <div className="max-w-screen-sm md:max-w-6xl mx-auto px-4">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-3">
-              We Already Did The Work
+              How It Works
             </h3>
             <p className="text-center text-slate-600 mb-8 md:mb-12 max-w-2xl mx-auto text-base sm:text-lg">
-              Your draft menu is ready. Just review and publish.
+              Simple, transparent, no surprises.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="text-center group hover:scale-105 transition-transform">
                 <div className="w-16 h-16 bg-red-50 border-2 border-red-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-red-400 transition-colors">
                   <span className="text-2xl font-bold text-red-600">1</span>
                 </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">We scanned Yelp</h4>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">See Your Preview (Free)</h4>
                 <p className="text-slate-600">
-                  Found menu photos in your public reviews and extracted every item.
+                  We already scraped your menu from Yelp. Review it now — no signup required.
                 </p>
               </div>
 
@@ -415,9 +474,9 @@ export default function LandingPage() {
                 <div className="w-16 h-16 bg-green-50 border-2 border-green-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-green-400 transition-colors">
                   <span className="text-2xl font-bold text-green-600">2</span>
                 </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">You approve</h4>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Claim It for $99</h4>
                 <p className="text-slate-600">
-                  Review the draft, fix anything that needs attention, and publish.
+                  Like what you see? Pay once, own it forever. Includes everything below.
                 </p>
               </div>
 
@@ -425,10 +484,63 @@ export default function LandingPage() {
                 <div className="w-16 h-16 bg-indigo-50 border-2 border-indigo-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:border-indigo-400 transition-colors">
                   <span className="text-2xl font-bold text-indigo-600">3</span>
                 </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-2">You share</h4>
+                <h4 className="text-xl font-bold text-slate-900 mb-2">Share Everywhere</h4>
                 <p className="text-slate-600">
-                  Get your link, QR codes, and share everywhere (Google, Instagram, tables).
+                  Post to Instagram, print the QR, submit to Google — customers find you instantly.
                 </p>
+              </div>
+            </div>
+
+            {/* What's Included - Pricing transparency */}
+            <div className="bg-gradient-to-br from-slate-50 to-red-50 border-2 border-red-200 rounded-xl p-6 md:p-8 max-w-2xl mx-auto">
+              <h4 className="text-2xl font-bold text-slate-900 mb-6 text-center">What's Included for $99</h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-2xl text-green-600 mt-0.5"></i>
+                  <div>
+                    <p className="font-bold text-slate-900">QR Code</p>
+                    <p className="text-sm text-slate-600">Print & display at tables</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-2xl text-green-600 mt-0.5"></i>
+                  <div>
+                    <p className="font-bold text-slate-900">Downloadable Files</p>
+                    <p className="text-sm text-slate-600">PDF, text, image formats</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-2xl text-green-600 mt-0.5"></i>
+                  <div>
+                    <p className="font-bold text-slate-900">Yelp Submission</p>
+                    <p className="text-sm text-slate-600">We upload your menu to Yelp</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-2xl text-green-600 mt-0.5"></i>
+                  <div>
+                    <p className="font-bold text-slate-900">Google Submission</p>
+                    <p className="text-sm text-slate-600">Get found in search results</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-2xl text-green-600 mt-0.5"></i>
+                  <div>
+                    <p className="font-bold text-slate-900">Live Link</p>
+                    <p className="text-sm text-slate-600">menusready.com/your-restaurant</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <i className="ri-checkbox-circle-fill text-2xl text-green-600 mt-0.5"></i>
+                  <div>
+                    <p className="font-bold text-slate-900">Free Updates</p>
+                    <p className="text-sm text-slate-600">Menu changes? Email us anytime</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 pt-6 border-t-2 border-red-200 text-center">
+                <p className="text-lg font-bold text-slate-900">No subscription. No ongoing fees. $99 one-time.</p>
+                <p className="text-sm text-slate-600 mt-2">Pay once, own it forever.</p>
               </div>
             </div>
           </div>
@@ -447,15 +559,97 @@ export default function LandingPage() {
             <span className="hidden sm:inline">·</span>
             <span>✓ Draft ready</span>
             <span className="hidden sm:inline">·</span>
-            <span>✓ Free to publish</span>
+            <span>✓ Free preview</span>
           </div>
           <Link
             href="/preview/harbor-diner-huntington-beach"
             className="w-full max-w-md mx-auto flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-white text-red-600 text-lg sm:text-xl font-bold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
           >
-            See My Menu Draft (Free)
+            See My Menu Preview (Free)
             <i className="ri-arrow-right-line text-xl"></i>
           </Link>
+        </div>
+      </section>
+
+      {/* CHANGE 3: FAQ Section - Objection handling */}
+      <section className="bg-white py-12 md:py-16 border-t-2 border-slate-200">
+        <div className="max-w-screen-sm md:max-w-4xl mx-auto px-4">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-8 md:mb-12">
+            Frequently Asked Questions
+          </h3>
+          
+          <div className="space-y-6">
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-start gap-2">
+                <i className="ri-question-line text-red-600 text-xl mt-0.5"></i>
+                What if I don't like the menu we built?
+              </h4>
+              <p className="text-slate-700 ml-7">
+                The preview is <strong>100% free</strong>. If it's not perfect, you don't pay. Simple.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-start gap-2">
+                <i className="ri-question-line text-red-600 text-xl mt-0.5"></i>
+                What if my menu changes?
+              </h4>
+              <p className="text-slate-700 ml-7">
+                Email us anytime — we'll update it for free within 24 hours. No extra charge.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-start gap-2">
+                <i className="ri-question-line text-red-600 text-xl mt-0.5"></i>
+                Why $99?
+              </h4>
+              <p className="text-slate-700 ml-7">
+                We manually scrape, format, and submit your menu to Yelp & Google. $99 is a <strong>one-time fee</strong> — no subscription, no recurring charges, no hidden costs. You own it forever.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-start gap-2">
+                <i className="ri-question-line text-red-600 text-xl mt-0.5"></i>
+                How long does it take?
+              </h4>
+              <p className="text-slate-700 ml-7">
+                Preview is <strong>instant</strong>. Once you pay, you get download links immediately. Yelp/Google submission takes 24-48 hours.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-start gap-2">
+                <i className="ri-question-line text-red-600 text-xl mt-0.5"></i>
+                Can I edit it myself?
+              </h4>
+              <p className="text-slate-700 ml-7">
+                Not yet, but <strong>coming soon</strong>. For now, just email us any changes and we'll update it free. Usually within 24 hours.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-start gap-2">
+                <i className="ri-question-line text-red-600 text-xl mt-0.5"></i>
+                Is this a subscription?
+              </h4>
+              <p className="text-slate-700 ml-7">
+                <strong>No.</strong> $99 one-time payment. No monthly fees, no recurring charges. Pay once, own it forever.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-slate-600 mb-4">Still have questions?</p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold"
+            >
+              Contact us
+              <i className="ri-arrow-right-line"></i>
+            </Link>
+          </div>
         </div>
       </section>
 
