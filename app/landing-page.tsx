@@ -89,30 +89,20 @@ export default function LandingPage() {
       {/* Hero - Above the fold on mobile */}
       <section className="max-w-screen-sm md:max-w-6xl mx-auto px-4 py-8 md:py-20 text-center min-h-[calc(100vh-120px)] md:min-h-0 flex flex-col justify-center">
         <FadeUp delay={0.05}>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-green-50 text-green-700 border border-green-200 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 shadow-sm">
-            <i className="ri-checkbox-circle-fill text-green-600"></i>
-            <span>Revenue Opportunity Identified</span>
-          </div>
-        </FadeUp>
-        
-        <FadeUp delay={0.10}>
-          {/* CHANGE 1: New headline - using Headline A (fear of loss trigger) */}
-          {/* Alternative headlines to A/B test:
-              Headline B: "398 Yelp Photos, Zero Menu Page — We Fixed That"
-              Headline C: "Your Customers Can't Find Your Menu Online" */}
+          {/* New headline - fear of loss trigger */}
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 mb-4 md:mb-6 leading-tight tracking-tight">
             Stop Losing Customers<br />
             to Your <span className="text-red-600 underline decoration-4 decoration-red-600/30">Invisible Menu</span>
           </h2>
         </FadeUp>
         
-        <FadeUp delay={0.18}>
+        <FadeUp delay={0.12}>
           <p className="text-lg sm:text-xl md:text-2xl text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
             Your menu is already built from Yelp. Just claim it.
           </p>
         </FadeUp>
 
-        <FadeUp delay={0.26}>
+        <FadeUp delay={0.20}>
           <div className="flex flex-col items-stretch gap-3 md:gap-4 max-w-md mx-auto">
             <Link
               href="/preview/harbor-diner-huntington-beach"
