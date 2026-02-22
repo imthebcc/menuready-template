@@ -1,0 +1,240 @@
+{
+  "restaurant": "Sariñana's Tamale Factory",
+  "location": "Santa Ana, CA",
+  "categories": [
+    {
+      "name": "Breakfast",
+      "items": [
+        {
+          "name": "Huevos Rancheros Plate",
+          "price": "6.00"
+        },
+        {
+          "name": "Huevos a la Mexicana Plate",
+          "price": "6.00"
+        },
+        {
+          "name": "Chilaquiles Plate",
+          "price": "6.00"
+        },
+        {
+          "name": "Chorizo Egg Plate",
+          "price": "6.00"
+        },
+        {
+          "name": "Ham & Egg Plate",
+          "price": "6.00"
+        },
+        {
+          "name": "Ham & Egg Burrito",
+          "price": "4.50"
+        },
+        {
+          "name": "Chorizo & Egg Burrito",
+          "price": "4.50"
+        },
+        {
+          "name": "Burrito de Machaca",
+          "price": "5.50"
+        }
+      ]
+    },
+    {
+      "name": "Tamales",
+      "items": [
+        {
+          "name": "Pork Tamales",
+          "price": "2.19"
+        },
+        {
+          "name": "Beef Tamales",
+          "price": "2.16"
+        },
+        {
+          "name": "Chicken Tamales",
+          "price": "2.00"
+        },
+        {
+          "name": "Rajas Tamales",
+          "price": "2.16"
+        },
+        {
+          "name": "Sweet Tamales",
+          "price": "2.00"
+        },
+        {
+          "name": "Tamales De Elote",
+          "price": "1.75"
+        }
+      ]
+    },
+    {
+      "name": "Tacos & Taquitos",
+      "items": [
+        {
+          "name": "Carne Asada Tacos",
+          "description": "Soft tacos",
+          "price": "2.00"
+        },
+        {
+          "name": "Carnitas Tacos",
+          "description": "Soft tacos",
+          "price": "2.00"
+        },
+        {
+          "name": "Chicken Tacos",
+          "description": "Hard or soft shell",
+          "price": "1.75"
+        },
+        {
+          "name": "Beef Tacos",
+          "description": "Hard or soft shell",
+          "price": "2.16"
+        },
+        {
+          "name": "Fish Tacos",
+          "description": "Soft tacos",
+          "price": "2.00"
+        },
+        {
+          "name": "Beef Tongue Tacos",
+          "description": "Soft tacos",
+          "price": "2.00"
+        },
+        {
+          "name": "Chicharron Tacos",
+          "description": "Soft tacos",
+          "price": "2.16"
+        },
+        {
+          "name": "Chicken Taquitos",
+          "description": "Served with avocado or sour cream",
+          "price": "3.00"
+        },
+        {
+          "name": "Beef Taquitos",
+          "description": "Served with avocado or sour cream",
+          "price": "3.00"
+        }
+      ]
+    },
+    {
+      "name": "Burritos",
+      "items": [
+        {
+          "name": "Carnitas Burrito",
+          "price": "5.00"
+        },
+        {
+          "name": "Carne Asada Burrito",
+          "price": "5.00"
+        },
+        {
+          "name": "Red Chile Beef Burrito",
+          "price": "5.00"
+        },
+        {
+          "name": "Green Chile Beef Burrito",
+          "price": "5.00"
+        },
+        {
+          "name": "Fish Burrito",
+          "price": "5.50"
+        },
+        {
+          "name": "Chicharron Burrito",
+          "price": "5.00"
+        },
+        {
+          "name": "Combination Burrito",
+          "description": "Beef and bean",
+          "price": "5.00"
+        },
+        {
+          "name": "Chile Relleno Burrito",
+          "price": "4.25"
+        }
+      ]
+    },
+    {
+      "name": "Dinner Plates",
+      "items": [
+        {
+          "name": "Carne Asada Plate",
+          "description": "Comes with rice and beans",
+          "price": "7.50"
+        },
+        {
+          "name": "Carnitas Plate",
+          "description": "Comes with rice and beans",
+          "price": "7.50"
+        },
+        {
+          "name": "Birria Plate",
+          "description": "Comes with rice and beans",
+          "price": "7.50"
+        },
+        {
+          "name": "Chicken Tamale Plate",
+          "description": "Comes with rice and beans",
+          "price": "8.00"
+        },
+        {
+          "name": "Pork Tamale Plate",
+          "description": "Comes with rice and beans",
+          "price": "8.00"
+        },
+        {
+          "name": "Red Chile Plate",
+          "description": "Comes with rice and beans",
+          "price": "7.50"
+        },
+        {
+          "name": "Green Chile Plate",
+          "description": "Comes with rice and beans",
+          "price": "7.50"
+        },
+        {
+          "name": "Chicken Enchilada Plate",
+          "description": "Comes with rice and beans",
+          "price": "7.50"
+        },
+        {
+          "name": "Beef Enchilada Plate",
+          "description": "Comes with rice and beans",
+          "price": "7.50"
+        },
+        {
+          "name": "Taquitos Plate",
+          "description": "Comes with rice and beans",
+          "price": "6.00"
+        }
+      ]
+    },
+    {
+      "name": "Sides & Soups",
+      "items": [
+        {
+          "name": "Menudo",
+          "price": "6.00"
+        },
+        {
+          "name": "Albondigas",
+          "price": "6.00"
+        },
+        {
+          "name": "Beef Soup",
+          "price": "6.50"
+        },
+        {
+          "name": "Spanish Rice",
+          "price": "2.25"
+        },
+        {
+          "name": "Refried Beans",
+          "price": "1.50"
+        }
+      ]
+    }
+  ]
+}

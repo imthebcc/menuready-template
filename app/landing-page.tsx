@@ -163,7 +163,7 @@ export default function LandingPage() {
       <div className="px-4 pt-8 pb-12">
         <FadeUp delay={0.20}>
           <Link
-            href="/preview/sarinanas-tamale-factory-santa-ana"
+            href="/preview/sarinanas-tamale-factory"
             className="w-full flex items-center justify-center gap-2 bg-[#E8281E] text-white text-base font-bold rounded-2xl px-6 py-[18px] hover:bg-[#c41f16] transition-all active:scale-[0.98]"
             style={{
               fontFamily: "'Sora', sans-serif",
@@ -617,7 +617,7 @@ export default function LandingPage() {
             <span>✓ Free preview</span>
           </div>
           <Link
-            href="/preview/sarinanas-tamale-factory-santa-ana"
+            href="/preview/sarinanas-tamale-factory"
             className="w-full max-w-md mx-auto flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-white text-red-600 text-lg sm:text-xl font-bold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
           >
             See What We Built For You →
