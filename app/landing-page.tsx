@@ -89,10 +89,10 @@ export default function LandingPage() {
       {/* Hero - Above the fold on mobile */}
       <section className="max-w-screen-sm md:max-w-6xl mx-auto px-4 py-8 md:py-20 text-center min-h-[calc(100vh-120px)] md:min-h-0 flex flex-col justify-center">
         <FadeUp delay={0.05}>
-          {/* New headline - fear of loss trigger */}
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 mb-4 md:mb-6 leading-tight tracking-tight">
-            Stop Losing Customers<br />
-            to Your <span className="text-red-600 underline decoration-4 decoration-red-600/30">Invisible Menu</span>
+            Your digital menu is already built.
+            <br />
+            Publish it in minutes.
           </h2>
         </FadeUp>
         
@@ -108,8 +108,7 @@ export default function LandingPage() {
               href="/preview/harbor-diner-huntington-beach"
               className="w-full flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-red-600 text-white text-lg sm:text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
             >
-              Preview My Menu (Free)
-              <i className="ri-arrow-right-line text-xl sm:text-2xl"></i>
+              See Your Free Preview →
             </Link>
             <p className="text-sm text-slate-500 text-center">
               No credit card. Takes seconds.
@@ -559,8 +558,7 @@ export default function LandingPage() {
             href="/preview/harbor-diner-huntington-beach"
             className="w-full max-w-md mx-auto flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-white text-red-600 text-lg sm:text-xl font-bold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
           >
-            See My Menu Preview (Free)
-            <i className="ri-arrow-right-line text-xl"></i>
+            See Your Free Preview →
           </Link>
         </div>
       </section>
