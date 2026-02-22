@@ -86,32 +86,68 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Hero - Above the fold on mobile */}
-      <section className="max-w-screen-sm md:max-w-6xl mx-auto px-4 py-8 md:py-20 text-center min-h-[calc(100vh-120px)] md:min-h-0 flex flex-col justify-center">
+      {/* Hero - Owner-focused, pain points, conversion CTA */}
+      <section className="max-w-screen-sm md:max-w-4xl mx-auto px-4 py-8 md:py-16">
         <FadeUp delay={0.05}>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 mb-4 md:mb-6 leading-tight tracking-tight">
-            Your digital menu is already built.
+          {/* Headline - their problem, your solution */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4 md:mb-5 leading-tight text-center">
+            Customers can't find your menu online.
             <br />
-            Publish it in minutes.
+            We fix that today.
           </h2>
         </FadeUp>
         
-        <FadeUp delay={0.12}>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your menu is already built from Yelp. Just claim it.
+        <FadeUp delay={0.10}>
+          {/* Subtext - what it does in plain English */}
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed text-center">
+            We turn your Yelp photos into a clean, shareable digital menu with a QR code — no website, no tech skills, no setup.
           </p>
         </FadeUp>
 
-        <FadeUp delay={0.20}>
-          <div className="flex flex-col items-stretch gap-3 md:gap-4 max-w-md mx-auto">
+        {/* Pain point cards - stacked on mobile, grid on desktop */}
+        <div className="flex flex-col md:grid md:grid-cols-3 gap-4 mb-8 md:mb-10 max-w-3xl mx-auto">
+          <FadeUp delay={0.15}>
+            <div className="bg-white shadow-sm rounded-xl px-4 py-5 flex items-start gap-3">
+              <div className="text-2xl flex-shrink-0 text-red-600">😤</div>
+              <div className="text-left">
+                <p className="font-bold text-slate-900 mb-1">"I can't find their menu"</p>
+                <p className="text-sm text-slate-600">The #1 reason customers don't show up</p>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.18}>
+            <div className="bg-white shadow-sm rounded-xl px-4 py-5 flex items-start gap-3">
+              <div className="text-2xl flex-shrink-0 text-red-600">📸</div>
+              <div className="text-left">
+                <p className="font-bold text-slate-900 mb-1">Blurry Yelp photos aren't a menu</p>
+                <p className="text-sm text-slate-600">Customers give up and go somewhere else</p>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.21}>
+            <div className="bg-white shadow-sm rounded-xl px-4 py-5 flex items-start gap-3">
+              <div className="text-2xl flex-shrink-0 text-red-600">⭐</div>
+              <div className="text-left">
+                <p className="font-bold text-slate-900 mb-1">Better menu = better reviews</p>
+                <p className="text-sm text-slate-600">Customers know what to expect before they arrive</p>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+
+        <FadeUp delay={0.24}>
+          {/* CTA - big, full width, red */}
+          <div className="flex flex-col items-center gap-3 max-w-lg mx-auto">
             <Link
               href="/preview/harbor-diner-huntington-beach"
-              className="w-full flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-red-600 text-white text-lg sm:text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
+              className="w-full flex items-center justify-center px-8 py-5 bg-red-600 text-white text-xl font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl"
             >
-              See Your Free Preview →
+              See What We Built For You →
             </Link>
             <p className="text-sm text-slate-500 text-center">
-              No credit card. Takes seconds.
+              No setup. No tech skills. Ready today.
             </p>
           </div>
         </FadeUp>
@@ -558,7 +594,7 @@ export default function LandingPage() {
             href="/preview/harbor-diner-huntington-beach"
             className="w-full max-w-md mx-auto flex items-center justify-center gap-2 px-8 py-4 min-h-[52px] bg-white text-red-600 text-lg sm:text-xl font-bold rounded-lg hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl"
           >
-            See Your Free Preview →
+            See What We Built For You →
           </Link>
         </div>
       </section>
