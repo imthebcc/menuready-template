@@ -212,11 +212,13 @@ function SuccessContent() {
       <div className="text-center">
         <p className="text-[13px] text-[#6B7280] mb-2">Need help?</p>
         <a
-          href="mailto:support@menusready.com"
-          className="text-[#E8281E] font-semibold text-[14px]"
+          href="https://tally.so/r/QKDaMk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#E8281E] font-semibold text-[14px] hover:underline"
           style={{fontFamily: "'Sora', sans-serif"}}
         >
-          support@menusready.com
+          Contact Support →
         </a>
       </div>
     </div>

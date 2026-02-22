@@ -61,7 +61,9 @@ export default function LandingPage() {
           <span className="text-[#E8281E]"> Ready</span>
         </div>
         <a
-          href="mailto:support@menusready.com"
+          href="https://tally.so/r/QKDaMk"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-[13px] font-medium text-[#6B7280] bg-transparent border border-[#E8E6E1] rounded-full px-3.5 py-1.5 hover:bg-white transition-colors"
         >
           Need help?
@@ -696,13 +698,15 @@ export default function LandingPage() {
 
           <div className="mt-12 text-center">
             <p className="text-slate-600 mb-4">Still have questions?</p>
-            <Link
-              href="/contact"
+            <a
+              href="https://tally.so/r/QKDaMk"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold"
             >
               Contact us
               <i className="ri-arrow-right-line"></i>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
