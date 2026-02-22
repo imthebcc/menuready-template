@@ -96,9 +96,9 @@ export default function LandingPage() {
           {/* Alternative headlines to A/B test:
               Headline B: "398 Yelp Photos, Zero Menu Page — We Fixed That"
               Headline C: "Your Customers Can't Find Your Menu Online" */}
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-            Stop Losing Customers to<br />
-            Your <span className="text-red-600">Invisible Menu</span>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 mb-4 md:mb-6 leading-tight tracking-tight">
+            Stop Losing Customers<br />
+            to Your <span className="text-red-600 underline decoration-4 decoration-red-600/30">Invisible Menu</span>
           </h2>
         </FadeUp>
         
